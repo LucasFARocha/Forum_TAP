@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
+<title>Registrar-se</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -21,6 +21,7 @@
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+    input[type="text"],
     input[type="email"],
     input[type="password"] {
         width: 100%;
@@ -48,18 +49,31 @@
 </head>
 <body>
 
-<form action="{{ route('routeLoginUser') }}" method="post">
-    <h2>Logar</h2>
-    @csrf
-    <input type="email" id="email" name="email" placeholder='Email' required>
+<form action="{{ route('routeRegisterUser') }}" method="post">
+    <h2>Registrar-se</h2>
+    @csrf <!--tag em php para o token funcionar-->
+
+    <input type="text" id="name" name="name" placeholder="Nome de usuário"
+        value="{{ old('name') }}" required>
+    @error('name') 
+        <!--Essa área só existe em caso de erro-->
+        <span>{{ $message }}</span> 
+    @enderror
+
+    <input type="email" id="email" name="email" placeholder="Email"
+        value="{{ old('email') }}" required>
     @error('email')
         <span>{{ $message }}</span> 
     @enderror
-    <input type="password" id="password" name="password" placeholder='Senha' required>
+
+    <input type="password" id="password" name="password" placeholder="Senha" required>
     @error('password')
         <span>{{ $message }}</span> 
     @enderror
-    <input type="submit" value="Login">
+
+    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirmar Senha" required>
+
+    <input type="submit" value="Registrar">
 </form>
 
 </body>

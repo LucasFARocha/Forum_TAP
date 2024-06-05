@@ -14,19 +14,30 @@ use App\Http\Controllers\AuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/users', [UserController::class, 'listAllUsers'])->name('routeListAllUsers');
-Route::get('/users/{uid}', [UserController::class, 'listUserByID'])->name('routeLitsUserByID');
-Route::get('/users/create', [UserController::class, 'createUser'])->name('routeCreateUser');
-Route::get('/users/{uid}/edit', [UserController::class, 'editUser'])->name('routeEditUser');
-Route::get('/users/{uid}/delete', [UserController::class, 'deleteUser'])->name('routeDeleteUser');
-
 Route::match(
     ['get', 'post'], 
     '/login', 
     [AuthController::class, 'loginUser']
 )->name('routeLoginUser');
+
+Route::get('/logout', 
+    [AuthController::class, 'logoutUser']
+)->name('routeLogoutUser');
+
+Route::match(
+    ['get', 'post'], 
+    '/register', 
+    [UserController::class, 'registerUser']
+)->name('routeRegisterUser');
+
+// A url /create redirecionará para /register
+//Route::get('/create', [UserController::class, 'registerUser'])->name('routeRegisterUser');
+
+Route::middleware('auth')->group(function(){
+    // O middleware garante a autenticação para executar as rotas do usuário
+    Route::get('/users', [UserController::class, 'listAllUsers'])->name('routeListAllUsers');
+    Route::get('/users/{uid}', [UserController::class, 'listUserByID'])->name('routeLitsUserByID');
+    Route::get('/users/{uid}/edit', [UserController::class, 'editUser'])->name('routeEditUser');
+    Route::get('/users/{uid}/delete', [UserController::class, 'deleteUser'])->name('routeDeleteUser');
+});
+
