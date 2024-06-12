@@ -14,11 +14,15 @@ class UserController extends Controller
     // no_camel_case
 
     public function listAllUsers(Request $request){
-        return view('user.listAllUsers');
+        $users = User::all();
+
+        return view('user.listAllUsers', ['users' => $users]);
     }
 
     public function listUserByID(Request $request, $uid){
-        print($uid);
+        $user = User::where('id', $uid)->first();
+
+        return view('user.listUserByID', ['user' => $user]);
     }
 
     public function registerUser(Request $request){
@@ -46,12 +50,28 @@ class UserController extends Controller
         }
     }
 
-    public function editUser(){
-        return view('user.editUser');
+    public function editUser(Request $request, $uid){
+        $user = User::where('id', $uid)->first();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if($request->password != '')
+        {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+        
+        return redirect()
+            ->route('routeListUserByID', [$user->id])
+            ->with('message', 'Atualizado com sucesso!');
     }
 
-    public function deleteUser(){
-        return view('user.deleteUser');
+    public function deleteUser(Request $request, $uid){
+        User::where('id', $uid)->delete();
+
+        return redirect()
+            ->route('routeListAllUsers')
+            ->with('message', 'Excluído com sucesso!');
     }
 
 }

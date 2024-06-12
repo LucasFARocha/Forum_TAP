@@ -55,21 +55,16 @@
 
     <input type="text" id="name" name="name" placeholder="Nome de usuário"
         value="{{ old('name') }}" required>
-    @error('name') 
-        <!--Essa área só existe em caso de erro-->
-        <span>{{ $message }}</span> 
-    @enderror
+    <!--Essa área só existe em caso de erro-->
+    @error('name') <span>{{ $message }}</span> @enderror
 
     <input type="email" id="email" name="email" placeholder="Email"
         value="{{ old('email') }}" required>
-    @error('email')
-        <span>{{ $message }}</span> 
-    @enderror
-
+    @error('email') <span>{{ $message }}</span> @enderror
+    
+    
     <input type="password" id="password" name="password" placeholder="Senha" required>
-    @error('password')
-        <span>{{ $message }}</span> 
-    @enderror
+    @error('password') <span>{{ $message }}</span> @enderror
 
     <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirmar Senha" required>
 

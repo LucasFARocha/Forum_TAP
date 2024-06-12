@@ -51,14 +51,13 @@
 <form action="{{ route('routeLoginUser') }}" method="post">
     <h2>Logar</h2>
     @csrf
-    <input type="email" id="email" name="email" placeholder='Email' required>
-    @error('email')
-        <span>{{ $message }}</span> 
-    @enderror
+    <input type="email" id="email" name="email" placeholder='Email'
+        value="{{ old('email') }}" required>
+    @error('email') <span>{{ $message }}</span> @enderror
+
     <input type="password" id="password" name="password" placeholder='Senha' required>
-    @error('password')
-        <span>{{ $message }}</span> 
-    @enderror
+    @error('password') <span>{{ $message }}</span> @enderror
+
     <input type="submit" value="Login">
 </form>
 
