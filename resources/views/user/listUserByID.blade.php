@@ -1,4 +1,4 @@
-@extends('layouts.gpt')
+@extends('layouts.layout')
 
 @section('header', 'Listar Apenas Um Usuário')
 
