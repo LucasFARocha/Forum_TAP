@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fórum</title>
     <style>
+        *{
+            top: 0;
+            right: 0;
+        }
         .body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -43,8 +47,6 @@
             padding: 20px;
             background-color: #d8f9ff;
         }
-
-
     </style>
 <body>
     <div class="sidebar">

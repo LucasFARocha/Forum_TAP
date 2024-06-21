@@ -14,7 +14,7 @@
             width: 100%;
             height: 70px;
         }
-        .login,.register{
+        .login, .register, .welcome, .logout{
             position: absolute;
             display: flex;
             justify-content: center;
@@ -33,17 +33,31 @@
             right: 100px;
             margin-right: 60px;
         }
-        .register{
+        .welcome{
+            right: 100px;
+            margin-right: 70%;
+        }
+        .register, .logout{
             right: 0;
             margin-right: 30px;
         }
     </style>
+    @yield('style')
 </head>
 <body>
-    <nav class="header">
-        <a class="login" href="{{route('routeLoginUser')}}">Entrar</a>
-        <a class="register" href="{{route('routeRegisterUser')}}">Registrar-se</a>
-    </nav>
+    @if(Auth::guest())
+        <nav class="header">
+            <a class="login" href="{{route('routeLoginUser')}}">Entrar</a>
+            <a class="register" href="{{route('routeRegisterUser')}}">Registrar-se</a>
+        </nav>
+    @endif
+
+    @if(Auth::check())
+        <nav class="header">
+            <p class="welcome">Bem vindo ao Stack Underflow!</p>
+            <a href="{{route('routeLogoutUser')}}" class="logout">Sair</a>
+        </nav>
+    @endif
     
     @yield('content')
 </body>

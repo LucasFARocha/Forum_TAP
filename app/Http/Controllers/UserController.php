@@ -20,6 +20,9 @@ class UserController extends Controller
     }
 
     public function listUserByID(Request $request, $uid){
+        if(is_null($uid)){
+            return 0;
+        }
         $user = User::where('id', $uid)->first();
 
         return view('user.listUserByID', ['user' => $user]);
@@ -45,8 +48,8 @@ class UserController extends Controller
             ]);
     
             Auth::login($user);
-    
-            return view('index');
+            
+            return redirect()->route('routeHome');
         }
     }
 

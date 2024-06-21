@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TopicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,15 @@ use App\Http\Controllers\AuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function() {
-    return view('index');
-});
+if(Auth::check()){
+
+}
+else{
+
+}
+Route::get('/',
+    [TopicController::class, 'listAllTopics']
+)->name('routeHome');
 
 Route::match(
     ['get', 'post'], 
