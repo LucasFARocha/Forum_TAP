@@ -15,12 +15,6 @@ use App\Http\Controllers\TopicController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-if(Auth::check()){
-
-}
-else{
-
-}
 Route::get('/',
     [TopicController::class, 'listAllTopics']
 )->name('routeHome');

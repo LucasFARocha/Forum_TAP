@@ -14,7 +14,7 @@
             width: 100%;
             height: 70px;
         }
-        .login, .register, .welcome, .logout{
+        .login, .register, .welcome, .logout, .profile{
             position: absolute;
             display: flex;
             justify-content: center;
@@ -41,6 +41,10 @@
             right: 0;
             margin-right: 30px;
         }
+        .profile{
+            right: 50px;
+            margin-right: 50px;
+        }
     </style>
     @yield('style')
 </head>
@@ -55,6 +59,10 @@
     @if(Auth::check())
         <nav class="header">
             <p class="welcome">Bem vindo ao Stack Underflow!</p>
+
+            <!-- essa página precisa do id para chamar a função de listar usuário -->
+            <!-- mandar o id para o index ou para essa página(header)? -->
+            <a href="{{route('routeListUserByID', [$user->id])}}" class="profile">Perfil</a>
             <a href="{{route('routeLogoutUser')}}" class="logout">Sair</a>
         </nav>
     @endif
