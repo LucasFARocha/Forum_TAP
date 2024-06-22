@@ -28,12 +28,10 @@ class AuthController extends Controller
                 // return redirect()
                 // ->intended('/users')
                 // ->with('success', 'Login realizado com sucesso');
-
-                $user = Auth::user();
+                
                 return redirect()
                 ->route('routeHome')
-                ->with('sucess', 'Login realizado com sucesso!')
-                ->with('user', $user);
+                ->with('sucess', 'Login realizado com sucesso!');
             }
             return back()->withErrors([
                 'email' => 'Credenciais inválidas'

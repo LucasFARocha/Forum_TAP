@@ -61,26 +61,40 @@ class UserController extends Controller
     }
 
     public function editUser(Request $request, $uid){
-        $user = User::where('id', $uid)->first();
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if($request->password != '')
-        {
-            $user->password = Hash::make($request->password);
+        if($request->method() === 'GET'){
+            return view('user.editUser');
         }
-        $user->save();
-        
-        return redirect()
-            ->route('routeListUserByID', [$user->id])
-            ->with('message', 'Atualizado com sucesso!');
+        else
+        {
+            $user = User::where('id', $uid)->first();
+    
+            if($request->name != ''){
+                $request->validate(['name' => 'string|max:255']);
+                $user->name = $request->name;
+            }
+            if($request->email != ''){
+                $request->validate(['email' => 'string|email|max:255|unique:users']);
+                $user->email = $request->email;
+            }
+            if($request->password != '')
+            {
+                $request->validate(['password' => 'string|min:8']);
+                $user->password = Hash::make($request->password);
+            }
+            $user->save();
+            
+            return redirect()
+                ->route('routeListUserByID', [$user->id])
+                ->with('message', 'Atualizado com sucesso!');
+        }
+
     }
 
     public function deleteUser(Request $request, $uid){
         User::where('id', $uid)->delete();
 
         return redirect()
-            ->route('routeListAllUsers')
+            ->route('routeHome')
             ->with('message', 'Excluído com sucesso!');
     }
 

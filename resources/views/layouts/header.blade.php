@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stack Underflow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         *{
             right: 0;
@@ -14,7 +15,7 @@
             width: 100%;
             height: 70px;
         }
-        .login, .register, .welcome, .logout, .profile{
+        .home, .login, .register, .welcome, .logout, .profile, .edit, .delete{
             position: absolute;
             display: flex;
             justify-content: center;
@@ -29,13 +30,19 @@
             padding: 2px 10px 2px 10px;
             margin-top: 22px;
         }
+        .home{
+            left: 0;
+            margin-left: 30px;
+            width: fit-content;
+        }
         .login{
             right: 100px;
-            margin-right: 60px;
+            margin-right: 85px;
         }
         .welcome{
-            right: 100px;
-            margin-right: 70%;
+            left: 0;
+            margin-left: 135px;
+            width: fit-content;
         }
         .register, .logout{
             right: 0;
@@ -43,30 +50,63 @@
         }
         .profile{
             right: 50px;
-            margin-right: 50px;
+            margin-right: 68px;
+        }
+        .edit, .delete{
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: fit-content;
+            height: fit-content;
+            margin-left: 65%;
+            margin-top: 20%;
+        }
+        .edit{
+            margin-top: 17%;
+        }
+        .delete{
+            background-color: rgb(163, 7, 7);
+            margin-left: 64.5%;
+            border-style: none;
+        }
+        a:hover{
+            background: rgb(18, 64, 148);
+        }
+        .delete:hover{
+            background-color: rgb(182, 4, 4);
         }
     </style>
     @yield('style')
 </head>
 <body>
-    @if(Auth::guest())
-        <nav class="header">
-            <a class="login" href="{{route('routeLoginUser')}}">Entrar</a>
-            <a class="register" href="{{route('routeRegisterUser')}}">Registrar-se</a>
-        </nav>
-    @endif
-
-    @if(Auth::check())
-        <nav class="header">
-            <p class="welcome">Bem vindo ao Stack Underflow!</p>
-
-            <!-- essa página precisa do id para chamar a função de listar usuário -->
-            <!-- mandar o id para o index ou para essa página(header)? -->
-            <a href="{{route('routeListUserByID', [$user->id])}}" class="profile">Perfil</a>
-            <a href="{{route('routeLogoutUser')}}" class="logout">Sair</a>
-        </nav>
-    @endif
     
+    <nav class="header">
+        <a href="{{route('routeHome')}}" class="home"><i class="fa-solid fa-house"></i>&nbsp; Início</a>
+
+        @if(Auth::guest())
+            <a class="login" href="{{route('routeLoginUser')}}">Entrar &nbsp;
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+            <a class="register" href="{{route('routeRegisterUser')}}">Registrar-se &nbsp;
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        @endif
+        
+        @if(Auth::check())
+            
+            <p class="welcome">Bem vindo, {{ Auth::user()->name }}!</p>
+
+            <a href="{{route('routeListUserByID', [Auth::user()->id])}}" class="profile">Perfil &nbsp;
+                <i class="fa-solid fa-user"></i>
+            </a>
+
+            <a href="{{route('routeLogoutUser')}}" class="logout">Sair &nbsp;
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        @endif
+        
+    </nav>
     @yield('content')
 </body>
 </html>

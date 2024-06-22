@@ -1,50 +1,92 @@
-@extends('layouts.layout')
+@extends('layouts.header')
 
-@section('header', 'Listar Apenas Um Usuário')
+@section('style')
+    <style>
+        .main {
+            margin-top: 6%;
+            margin-left: 20%;
+            padding: 0 10px;
+            width: 58%;
+        }
+        .card {
+            background-color: rgb(65, 84, 189);
+            border-radius: 18px;
+            box-shadow: 1px 1px 8px 0 grey;
+            height: fit-content;
+            margin-bottom: 20px;
+            padding: 20px 50px 20px 50px;
+        }
+        .title{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 18pt;
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14pt;
+            color: white;
+            border: none;
+            height: fit-content;
+            width: 80%;
+        }
+        /* .message{
+            
+        } */
+    </style>
+@endsection
 
 @section('content')
     @if($user != null)
-        <table>
+        {{-- <table>
             <tr>
                 <td>{{ $user->name }}</td>
             </tr>
             <tr>
                 <td>{{ $user->email }}</td>
             </tr>
-        </table>
+        </table> --}}
+        <div class="main">
+            <div class="card">
+                <p class="title">Suas informações de usuário</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Nome: </td>
+                            <td>{{ $user->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email: </td>
+                            <td>{{ $user->email }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="{{route('routeEditUser', [$user->id])}}" class="edit">Editar usuário &nbsp;
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+                
+                <form action="{{route('routeDeleteUser', [$user->id])}}" method="post">
+                    @csrf <!--tag em php para o token funcionar-->
+                    @method('delete')
 
-        <!-- Área de editar usuário -->
-        <form action="{{ route('routeEditUser', [$user->id]) }}" method="post">
-            <h2>Editar Usuário</h2>
-            <span>{{ session('message') }}</span>
-            @csrf <!--tag em php para o token funcionar-->
-            @method('put')
+                    <button class="delete" type="submit">Excluir Usuário &nbsp;
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </form>
+                {{-- <span class="message">{{ session('message') }}</span> --}}
+            </div>
+        </div>
 
-            <input type="text" id="name" name="name" placeholder="Nome de usuário"
-                value="{{ old('name') }}">
-            <!--Essa área só existe em caso de erro-->
-            @error('name') <span>{{ $message }}</span> @enderror
-
-            <input type="email" id="email" name="email" placeholder="Email"
-                value="{{ old('email') }}">
-            @error('email') <span>{{ $message }}</span> 
-            @enderror
-
-            <input type="password" id="password" name="password" placeholder="Senha">
-            @error('password') <span>{{ $message }}</span> @enderror
-
-            <input type="submit" value="Editar">
-        </form>
-
-        <!-- Área de excluir usuário -->
+        {{-- <!-- Área de excluir usuário -->
         <form action="{{ route('routeDeleteUser', [$user->id]) }}" method="post">
             <h2>Excluir Usuário</h2>
             @csrf <!--tag em php para o token funcionar-->
             @method('delete')
 
             <input type="submit" value="Excluir">
-        </form>
-        @else
+        </form> --}}
+    @else
         <div>Usuário não encontrado!</div>
         
     @endif

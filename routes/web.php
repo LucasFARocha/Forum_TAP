@@ -43,7 +43,12 @@ Route::middleware('auth')->group(function(){
     Route::get('/users', [UserController::class, 'listAllUsers'])->name('routeListAllUsers');
     Route::get('/users/{uid}', [UserController::class, 'listUserByID'])->name('routeListUserByID');
 
-    Route::put('/users/{uid}/edit', [UserController::class, 'editUser'])->name('routeEditUser');
+    Route::match(
+        ['get', 'put'],
+        '/users/{uid}/edit', [UserController::class, 'editUser']
+    )->name('routeEditUser');
+
+    //Route::put('/users/{uid}/edit', [UserController::class, 'editUser'])->name('routeEditUser');
     Route::delete('/users/{uid}/delete', [UserController::class, 'deleteUser'])->name('routeDeleteUser');
 });
 
