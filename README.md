@@ -8,7 +8,7 @@ Todos os tópicos existentes são mostrados aqui, além disso, há uma mensagem 
 ![image](https://github.com/LucasFARocha/Forum_TAP/assets/109397963/49dc9c91-933b-48f6-b1d2-3e945ee5b2e8)
 
 ## Login
-Tanto o sistema de Login quando o de Registro contam com verificações para as entradas do usuário
+Tanto o sistema de Login quanto o de Registro contam com verificações para as entradas do usuário
 ![image](https://github.com/LucasFARocha/Forum_TAP/assets/109397963/346e2bac-aab2-41c4-9257-b8070940c6b0)
 
 ## Registro
