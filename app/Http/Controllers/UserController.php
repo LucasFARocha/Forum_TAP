@@ -28,13 +28,6 @@ class UserController extends Controller
         return view('user.listUserByID', ['user' => $user]);
     }
 
-    public function getUserByID(Request $request, $uid)
-    {
-        $user = User::where('id', $uid)->first();
-
-        return redirect()->route('routeHome', $user);
-    }
-
     public function registerUser(Request $request){
         if($request->method() === 'GET')
         {

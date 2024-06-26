@@ -17,6 +17,27 @@
             margin-top: 2%;
             font-size: 12pt;
         }
+        .view-topic{
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: fit-content;
+            height: fit-content;
+            position: relative;
+            display: flex;
+            font-size: 14pt;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(99, 135, 168);
+            color: #ffffffdd;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-left: 80%;
+            padding: 2px 10px 2px 10px;
+        }
+        .view-topic:hover{
+            background-color: rgb(83, 114, 144);
+        }
     </style>
 @endsection
 
@@ -36,6 +57,10 @@
                     </div>
 
                 </div>
+
+                <a href="{{route('routeListTopicByID', $topic->id)}}" class="view-topic">
+                    Visualizar
+                </a>
             </div>
 
         @endforeach

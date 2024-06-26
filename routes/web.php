@@ -19,6 +19,10 @@ Route::get('/',
     [TopicController::class, 'listAllTopics']
 )->name('routeHome');
 
+Route::get('/topics/{topic_id}', 
+    [TopicController::class, 'listTopicByID']
+)->name('routeListTopicByID');
+
 Route::match(
     ['get', 'post'], 
     '/login', 

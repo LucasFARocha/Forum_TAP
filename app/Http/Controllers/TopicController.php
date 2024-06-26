@@ -15,7 +15,10 @@ class TopicController extends Controller
         
         return view('index', ['topics' => $topics]);
     }
-    // listTopicByID($topic_id){
+    public function listTopicByID(Request $request, $topic_id){
 
-    // }
+        $topic = Topic::where('id', $topic_id)->first();
+
+        return view('topic.listTopicByID', ['topic' => $topic]);
+    }
 }
