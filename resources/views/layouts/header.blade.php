@@ -15,7 +15,7 @@
             width: 100%;
             height: 70px;
         }
-        .home, .login, .register, .welcome, .logout, .profile, .edit, .delete{
+        .home, .login, .register, .welcome, .logout, .profile{
             position: absolute;
             display: flex;
             justify-content: center;
@@ -52,29 +52,8 @@
             right: 50px;
             margin-right: 68px;
         }
-        .edit, .delete{
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: fit-content;
-            height: fit-content;
-            margin-left: 65%;
-            margin-top: 20%;
-        }
-        .edit{
-            margin-top: 17%;
-        }
-        .delete{
-            background-color: rgb(163, 7, 7);
-            margin-left: 64.5%;
-            border-style: none;
-        }
         a:hover{
             background: rgb(18, 64, 148);
-        }
-        .delete:hover{
-            background-color: rgb(182, 4, 4);
         }
     </style>
     @yield('style')

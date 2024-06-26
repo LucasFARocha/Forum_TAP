@@ -31,9 +31,35 @@
             height: fit-content;
             width: 80%;
         }
-        /* .message{
-            
-        } */
+        .edit, .delete{
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: fit-content;
+            height: fit-content;
+            position: absolute;
+            display: flex;
+            font-size: 14pt;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ffffffdd;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20% 10px 0 65%;
+            padding: 2px 10px 2px 10px;
+        }
+        .edit{
+            margin-top: 17%;
+            background-color: #1b258d;
+        }
+        .delete{
+            background-color: rgb(163, 7, 7);
+            margin-left: 64.5%;
+            border-style: none;
+        }
+        .delete:hover{
+            background-color: rgb(182, 4, 4);
+        }
     </style>
 @endsection
 
