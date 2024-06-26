@@ -68,7 +68,7 @@
                 <i class="fa-solid fa-right-from-bracket"></i>
             </a>
             <a class="register" href="{{route('routeRegisterUser')}}">Registrar-se &nbsp;
-                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-user-plus"></i>
             </a>
         @endif
         

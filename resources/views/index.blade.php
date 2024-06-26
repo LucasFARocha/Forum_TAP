@@ -13,6 +13,10 @@
         .topic-content{
             font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
+        .grid-container{
+            display: grid;
+            grid-template-columns: auto 13%;
+        }
         .description{
             margin-top: 2%;
             font-size: 12pt;
@@ -28,20 +32,46 @@
             display: flex;
             font-size: 14pt;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: rgb(99, 135, 168);
+            background-color: rgb(71, 99, 125);
             color: #ffffffdd;
             text-decoration: none;
             border-radius: 5px;
-            margin-left: 80%;
+            margin-top: 5%;
             padding: 2px 10px 2px 10px;
         }
         .view-topic:hover{
-            background-color: rgb(83, 114, 144);
+            background-color: rgb(82, 112, 140);
+        }
+        .create-topic{
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: fit-content;
+            height: fit-content;
+            position: relative;
+            display: flex;
+            font-size: 14pt;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(71, 99, 125);
+            color: #ffffffdd;
+            text-decoration: none;
+            margin-top: 5px;
+            margin-left: 5px;
+            border-radius: 5px;
+            padding: 2px 10px 2px 10px;
+        }
+        .create-topic:hover{
+            background-color: rgb(82, 112, 140);
         }
     </style>
 @endsection
 
 @section('content')
+
+    <a href="" class="create-topic">Criar Tópico &nbsp;
+        <i class="fa-solid fa-plus"></i>
+    </a>
 
     <div class="topics-container">
         @foreach($topics as $topic)
@@ -49,18 +79,23 @@
             <div class="topic-item">
                 <div class="topic-content">
 
-                    <div class="title">
-                        <h2>{{ $topic->title }}</h2>
+                    <div class="grid-container">
+                        <div class="title">
+                            <h2>{{ $topic->title }}</h2>
+                        </div>
+                        
+                        <a href="{{route('routeListTopicByID', $topic->id)}}" class="view-topic">
+                            Visualizar
+                            {{-- <i class="fa-solid fa-eye"></i> --}}
+                        </a>
                     </div>
+
                     <div class="description">
                         <p>{{ $topic->description }}</p>
                     </div>
+                    
 
                 </div>
-
-                <a href="{{route('routeListTopicByID', $topic->id)}}" class="view-topic">
-                    Visualizar
-                </a>
             </div>
 
         @endforeach
