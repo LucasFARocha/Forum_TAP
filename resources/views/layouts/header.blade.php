@@ -37,7 +37,7 @@
         }
         .login{
             right: 100px;
-            margin-right: 85px;
+            margin-right: 90px;
         }
         .welcome{
             left: 0;

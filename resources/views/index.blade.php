@@ -68,10 +68,12 @@
 @endsection
 
 @section('content')
-
-    <a href="" class="create-topic">Criar Tópico &nbsp;
-        <i class="fa-solid fa-plus"></i>
-    </a>
+    @if(Auth::check())
+        <a href="" class="create-topic">
+            <i class="fa-solid fa-plus"></i>
+            &nbsp; Criar Tópico
+        </a>
+    @endif
 
     <div class="topics-container">
         @foreach($topics as $topic)
@@ -85,8 +87,8 @@
                         </div>
                         
                         <a href="{{route('routeListTopicByID', $topic->id)}}" class="view-topic">
-                            Visualizar
-                            {{-- <i class="fa-solid fa-eye"></i> --}}
+                            Visualizar &nbsp;
+                            <i class="fa-solid fa-eye"></i>
                         </a>
                     </div>
 

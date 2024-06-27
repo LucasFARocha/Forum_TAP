@@ -48,13 +48,13 @@
             padding: 2px 10px 2px 10px;
         }
         .edit{
-            margin-top: 19%;
+            margin-top: 17.8%;
             margin-left: 62%;
             background-color: #1b258d;
         }
         .delete{
             background-color: rgb(163, 7, 7);
-            margin-top: 21.7%;
+            margin-top: 20.2%;
             margin-left: 61.4%;
             border-style: none;
         }

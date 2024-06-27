@@ -19,7 +19,8 @@
             box-shadow: 1px 1px 8px 0 grey;
             height: fit-content ;
             padding: 20px 50px 20px 50px;
-            width: 900px;
+            width: fit-content;
+            max-width: 900px;
             margin: auto;
             align-items: center;
         }
@@ -93,19 +94,21 @@
                     </div>
                 </div>
             </div>
-            <div class="buttons">
-                <a href="" class="edit">Editar Tópico &nbsp;
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </a>
-                <form action=""> <!-- method="post" -->
-                    @csrf
-                    {{-- @method('delete') --}}
-    
-                    <button class="delete" type="submit">Excluir Tópico &nbsp;
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </form>
-            </div>
+            @if(Auth::check())
+                <div class="buttons">
+                    <a href="" class="edit">Editar Tópico &nbsp;
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <form action=""> <!-- method="post" -->
+                        @csrf
+                        {{-- @method('delete') --}}
+        
+                        <button class="delete" type="submit">Excluir Tópico &nbsp;
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
+            @endif
         </div>
     </div>
 
