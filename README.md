@@ -13,7 +13,7 @@ Essa tela mostra as informações específicas do tópico selecionado, como tamb
 ![image](https://github.com/LucasFARocha/Forum_TAP/assets/109397963/46395e1a-1b3d-48fc-a03d-082f349cd724)
 
 ## Login
-Tanto o sistema de Login quanto o de Registro contam com verificações para as entradas do usuário.
+Sistema de Login que conta com verificações para as entradas do usuário.
 ![image](https://github.com/LucasFARocha/Forum_TAP/assets/109397963/346e2bac-aab2-41c4-9257-b8070940c6b0)
 
 ## Registro
@@ -21,7 +21,7 @@ Possui verificações assim como a tela de Login.
 ![image](https://github.com/LucasFARocha/Forum_TAP/assets/109397963/0fe21f85-04f2-4730-85f6-756943717c53)
 
 ## Página de Perfil
-Essa tela mostra as informações do seu usuário e conta com um botão para editá-lo ou excluí-lo.
+Essa tela mostra as informações do seu usuário e conta com botões para editá-lo ou excluí-lo.
 ![image](https://github.com/LucasFARocha/Forum_TAP/assets/109397963/ada56a8d-9046-4730-85e4-cdb4431e1f10)
 
 ## Tela de edição de Usuário
