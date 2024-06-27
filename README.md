@@ -25,7 +25,7 @@ Essa tela mostra as informações do seu usuário e conta com botões para edit�
 ![image](https://github.com/LucasFARocha/Forum_TAP/assets/109397963/ada56a8d-9046-4730-85e4-cdb4431e1f10)
 
 ## Tela de edição de Usuário
-Uma tela que permite modificar os dados do seu usuário, também contendo verificações.
+Uma tela ainda não funcional que permite modificar os dados do seu usuário, também contendo verificações.
 ![image](https://github.com/LucasFARocha/Forum_TAP/assets/109397963/38493318-0354-47db-9bc9-4a02c7995761)
 
 ## Tela de Moderação de Usuários
