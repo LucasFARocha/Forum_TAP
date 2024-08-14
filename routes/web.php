@@ -52,6 +52,11 @@ Route::middleware('auth')->group(function(){
         '/users/{uid}/edit', [UserController::class, 'editUser']
     )->name('routeEditUser');
 
+    Route::match(
+        ['get', 'put'],
+        '/create-topic', [TopicController::class, 'createTopic']
+    )->name('routeCreateTopic');
+
     //Route::put('/users/{uid}/edit', [UserController::class, 'editUser'])->name('routeEditUser');
     Route::delete('/users/{uid}/delete', [UserController::class, 'deleteUser'])->name('routeDeleteUser');
 });
