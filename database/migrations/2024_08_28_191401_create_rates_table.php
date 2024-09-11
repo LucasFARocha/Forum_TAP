@@ -18,9 +18,8 @@ return new class extends Migration
             $table->boolean('vote');
             $table->timestamps();
 
-            //fazer relacionamento entre user e post
-            // $table->foreign('tag_id')->references('id')->on('users');
-            // $table->foreign('topic_id')->references('id')->on('posts');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
 
