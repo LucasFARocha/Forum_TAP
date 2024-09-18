@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             // O id dessa classe referencia o id da classe post
-            $table->unsignedBigInter('id')->primary();
+            $table->unsignedBigInteger('id')->primary();
             $table->foreign('id')->references('id')->on('posts');
 
             $table->string('title');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('status')->default(true);
             $table->timestamps();
 
+            $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }

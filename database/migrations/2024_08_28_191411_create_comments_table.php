@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             // O id dessa classe referencia o id da classe post
-            $table->unsignedBigInter('id')->primary();
+            $table->unsignedBigInteger('id')->primary();
             $table->foreign('id')->references('id')->on('posts');
             
             $table->text('content');
             $table->timestamps();
 
+            $table->unsignedBigInteger('topic_id');
             $table->foreign('topic_id')->references('id')->on('topics');
         });
     }
