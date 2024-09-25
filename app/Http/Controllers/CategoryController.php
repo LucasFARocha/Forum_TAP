@@ -4,19 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
     //
-    public function listAllCategories(Request $request){
+    public function listAllCategories(){
         $categories = Category::all();
 
-        return view('category.listAllCategories', ['topic' => $topics]);
+        return view('category.listAllCategories', ['categories' => $categories]);
     }
 
-    // public function listCategoryByID(Request $request){
-    //     $category = Category::where('id', $category_id)->first();
+    public function listCategoryByID($category_id){
+        $category = Category::where('id', $category_id)->first();
 
-    //     return view('category.listCategoryByID', ['category' => $category]);
-    // }
+        return view('category.listCategoryByID', ['category' => $category]);
+    }
 }

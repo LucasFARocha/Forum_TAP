@@ -9,13 +9,13 @@ use App\Models\Topic;
 class TopicController extends Controller
 {
     //
-    public function listAllTopics(Request $request){
+    public function listAllTopics(){
         $topics = Topic::all();
         
         return view('index', ['topics' => $topics]);
     }
 
-    public function listTopicByID(Request $request, $topic_id){
+    public function listTopicByID($topic_id){
         $topic = Topic::where('id', $topic_id)->first();
 
         return view('topic.listTopicByID', ['topic' => $topic]);

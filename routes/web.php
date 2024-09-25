@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,8 @@ use App\Http\Controllers\TopicController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [TopicController::class, 'listAllTopics']
+)->name('routeHome');
 
 Route::match(['get', 'post'], '/login', [AuthController::class, 'loginUser']
 )->name('routeLoginUser');
@@ -25,13 +28,14 @@ Route::get('/logout', [AuthController::class, 'logoutUser']
 Route::match(['get', 'post'], '/register', [UserController::class, 'registerUser']
 )->name('routeRegisterUser');
 
-Route::get('/', [TopicController::class, 'listAllTopics']
-)->name('routeHome');
-
 Route::get('/topics/{topic_id}', [TopicController::class, 'listTopicByID']
 )->name('routeListTopicByID');
 
-// Route::get('/categories', );
+Route::get('/categories', [CategoryController::class, 'listAllCategories']
+)->name('routeListAllCategories');
+
+Route::get('/categories/{category_id}', [CategoryController::class, 'listCategoryByID']
+)->name('routeListCategoryByID');
 
 // A url /create redirecionará para /register
 //Route::get('/create', [UserController::class, 'registerUser'])->name('routeRegisterUser');
