@@ -15,7 +15,9 @@
             width: 100%;
             height: 70px;
         }
-        .home, .login, .register, .welcome, .logout, .profile{
+        .home, .login, .register, .welcome, .logout, .profile,
+        .create-topic, 
+        .view-category, .create-category{
             position: absolute;
             display: flex;
             justify-content: center;

@@ -53,16 +53,12 @@
             display: flex;
             font-size: 14pt;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: rgb(71, 99, 125);
             color: #ffffffdd;
             text-decoration: none;
             margin-top: 5px;
             margin-left: 5px;
             border-radius: 5px;
             padding: 2px 10px 2px 10px;
-        }
-        .create-topic:hover{
-            background-color: rgb(82, 112, 140);
         }
     </style>
 @endsection

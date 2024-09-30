@@ -21,10 +21,6 @@
             margin-top: 2%;
             font-size: 12pt;
         }
-        .view-category, .create-category{
-            background-color: #1b258d;
-            color: #ffffffdd;
-        }
         .view-category{
             left: 0;
             right: 0;
@@ -65,7 +61,7 @@
 @endsection
 @section('content')
     @if(Auth::check())
-        <a href="" class="create-category">
+        <a href=" {{route('routeCreateCategory')}} " class="create-category">
             <i class="fa-solid fa-plus"></i>
             &nbsp; Criar Categoria
         </a>

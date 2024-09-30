@@ -16,9 +16,15 @@ use App\Http\Controllers\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Página inicial / Rotas do Tópico
 Route::get('/', [TopicController::class, 'listAllTopics']
 )->name('routeHome');
 
+Route::get('/topics/{topic_id}', [TopicController::class, 'listTopicByID']
+)->name('routeListTopicByID');
+
+// Rotas de Autenticação do Usuário; Login, Logout e Registro
 Route::match(['get', 'post'], '/login', [AuthController::class, 'loginUser']
 )->name('routeLoginUser');
 
@@ -28,9 +34,7 @@ Route::get('/logout', [AuthController::class, 'logoutUser']
 Route::match(['get', 'post'], '/register', [UserController::class, 'registerUser']
 )->name('routeRegisterUser');
 
-Route::get('/topics/{topic_id}', [TopicController::class, 'listTopicByID']
-)->name('routeListTopicByID');
-
+// Rotas da Categoria
 Route::get('/categories', [CategoryController::class, 'listAllCategories']
 )->name('routeListAllCategories');
 
@@ -41,18 +45,34 @@ Route::get('/categories/{category_id}', [CategoryController::class, 'listCategor
 //Route::get('/create', [UserController::class, 'registerUser'])->name('routeRegisterUser');
 
 Route::middleware('auth')->group(function(){
-    // O middleware garante a autenticação para executar as rotas do usuário
-    Route::get('/users', [UserController::class, 'listAllUsers'])->name('routeListAllUsers');
-    Route::get('/users/{uid}', [UserController::class, 'listUserByID'])->name('routeListUserByID');
+    // O middleware garante a autenticação para executar as rotas dentro dele
+
+    // ----------- Rotas do usuário -----------
+    Route::get('/users', [UserController::class, 'listAllUsers']
+    )->name('routeListAllUsers');
+
+    Route::get('/users/{uid}', [UserController::class, 'listUserByID']
+    )->name('routeListUserByID');
 
     Route::match(['get', 'put'], '/users/{uid}/edit', [UserController::class, 'editUser']
     )->name('routeEditUser');
+    //Route::put('/users/{uid}/edit', [UserController::class, 'editUser'])->name('routeEditUser');
 
+    Route::delete('/users/{uid}/delete', [UserController::class, 'deleteUser']
+    )->name('routeDeleteUser');
+    
+    // ----------- Rotas do Tópico -----------
     Route::match(['get', 'put'], '/create-topic', [TopicController::class, 'createTopic']
     )->name('routeCreateTopic');
 
-    //Route::put('/users/{uid}/edit', [UserController::class, 'editUser'])->name('routeEditUser');
-    Route::delete('/users/{uid}/delete', [UserController::class, 'deleteUser']
-    )->name('routeDeleteUser');
+    // ----------- Rotas da Categoria -----------
+    Route::match(['get', 'put'], '/create-category', [CategoryController::class, 'createCategory']
+    )->name('routeCreateCategory');
+
+    Route::match(['get', 'put'], '/categories/{id}/edit', [CategoryController::class, 'editCategory']
+    )->name('routeEditCategory');
+
+    Route::delete('/categories/{id}/delete', [CategoryController::class, 'deleteCategory']
+    )->name('routeDeleteCategory');
 });
 

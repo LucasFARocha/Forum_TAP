@@ -13,13 +13,13 @@ class UserController extends Controller
     // camelCase
     // no_camel_case
 
-    public function listAllUsers(Request $request){
+    public function listAllUsers(){
         $users = User::all();
 
         return view('user.listAllUsers', ['users' => $users]);
     }
 
-    public function listUserByID(Request $request, $uid){
+    public function listUserByID($uid){
         // if(is_null($uid)){
         //     return 0;
         // }
