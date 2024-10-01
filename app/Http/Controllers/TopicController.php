@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Topic;
+use App\Models\Category;
 
 class TopicController extends Controller
 {
@@ -21,13 +22,15 @@ class TopicController extends Controller
         return view('topic.listTopicByID', ['topic' => $topic]);
     }
 
-    // public function createTopic(Request $request){
-    //     if($request->method() === 'GET'){
-    //         return view('topic.createTopic');
-    //     }
-    //     else
-    //     {
+    public function createTopic(Request $request){
+        if($request->method() === 'GET'){
+            $categories = Category::all();
+
+            return view('topic.createTopic', ['categories' => $categories]);
+        }
+        else
+        {
             
-    //     }
-    // }
+        }
+    }
 }

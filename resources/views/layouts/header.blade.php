@@ -16,7 +16,7 @@
             height: 70px;
         }
         .home, .login, .register, .welcome, .logout, .profile,
-        .create-topic, 
+        .create-topic, .view-categories,
         .view-category, .create-category{
             position: absolute;
             display: flex;
@@ -63,7 +63,10 @@
 <body>
     
     <nav class="header">
-        <a href="{{route('routeHome')}}" class="home"><i class="fa-solid fa-house"></i>&nbsp; Início</a>
+        <a href="{{route('routeHome')}}" class="home">
+            <i class="fa-solid fa-house"></i>
+            &nbsp; Início
+        </a>
 
         @if(Auth::guest())
             <a class="login" href="{{route('routeLoginUser')}}">Entrar &nbsp;
