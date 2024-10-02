@@ -15,24 +15,27 @@
             width: 100%;
             height: 70px;
         }
-        .home, .login, .register, .welcome, .logout, .profile,
-        .create-topic, .view-categories,
-        .view-category, .create-category,
-        .view-tags, .view-tag, .create-tag{
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        a, .welcome{
             font-size: 14pt;
             font-family: Arial, Helvetica, sans-serif;
             color: #ffffffdd;
             text-decoration: none;
             background-color: #1b258d;
             border-radius: 5px;
-            margin-right: 10px;
             padding: 2px 10px 2px 10px;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            display: flex;
+            margin-right: 10px;
             margin-top: 22px;
         }
+        /* .home, .login, .register, .welcome, .logout, .profile,
+        .create-topic, .view-categories,
+        .view-category, .create-category,
+        .view-tags, .view-tag, .create-tag{
+            
+        } */
         .home{
             left: 0;
             margin-left: 30px;
@@ -57,6 +60,10 @@
         }
         a:hover{
             background: rgb(18, 64, 148);
+        }
+        .text{
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #ffffffdd;
         }
     </style>
     @yield('style')

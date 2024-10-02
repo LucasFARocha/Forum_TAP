@@ -12,8 +12,6 @@
             padding: 5px 10px 5px 10px;
         }
         .topic-content{
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            color: #ffffffdd;
             font-size: 18pt;
         }
         .grid-container{
@@ -32,12 +30,7 @@
             width: 110px;
             height: 22px;
             /* position: relative; */
-            /* display: flex; */
-            font-size: 14pt;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #1b258d;
-            color: #ffffffdd;
-            text-decoration: none;
+            display: block;
             border-radius: 5px;
             margin-top: 8px;
             margin-left: 167px;
@@ -51,15 +44,8 @@
             width: 130px;
             height: 22px;
             position: relative;
-            /* display: flex; */
-            font-size: 14pt;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #ffffffdd;
-            text-decoration: none;
             margin-top: 5px;
             margin-left: 30px;
-            border-radius: 5px;
-            padding: 2px 10px 2px 10px;
         }
         .view-categories{
             margin-left: 0px;
@@ -95,7 +81,7 @@
         @foreach($topics as $topic)
 
             <div class="topic-item">
-                <div class="topic-content">
+                <div class="topic-content text">
 
                     <div class="grid-container">
                         <div class="title">
