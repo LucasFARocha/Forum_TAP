@@ -5,6 +5,7 @@
         .topic-item{
             position: relative;
             max-width: 75%;
+            height: min-content;
             margin: 2% 12% 2% 12%;
             border-radius: 5px;
             background-color: rgb(65, 84, 189);
@@ -17,7 +18,7 @@
         }
         .grid-container{
             display: grid;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: max-content max-content max-content;
         }
         .description{
             margin-top: 2%;
@@ -38,11 +39,11 @@
             color: #ffffffdd;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 5px;
-            margin-left: 150px;
+            margin-top: 8px;
+            margin-left: 167px;
             padding: 2px 10px 2px 10px;
         }
-        .create-topic, .view-categories{
+        .create-topic, .view-categories, .view-tags{
             /* left: 0;
             right: 0;
             top: 0;
@@ -62,7 +63,10 @@
         }
         .view-categories{
             margin-left: 0px;
-            margin-right: 1070px;
+        }
+        .view-tags{
+            margin-left: 0px;
+            width: 80px;
         }
     </style>
 @endsection
@@ -78,6 +82,11 @@
             <a href="{{route('routeListAllCategories')}}" class="view-categories">
                 <i class="fa-solid fa-eye"></i>
                 &nbsp; Categorias
+            </a>
+
+            <a href="{{route('routeListAllTags')}}" class="view-tags">
+                <i class="fa-solid fa-eye"></i>
+                &nbsp; Tags
             </a>
         </div>
     @endif

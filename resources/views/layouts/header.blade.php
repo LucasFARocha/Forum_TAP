@@ -17,7 +17,8 @@
         }
         .home, .login, .register, .welcome, .logout, .profile,
         .create-topic, .view-categories,
-        .view-category, .create-category{
+        .view-category, .create-category,
+        .view-tags, .view-tag, .create-tag{
             position: absolute;
             display: flex;
             justify-content: center;

@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,13 @@ Route::get('/categories', [CategoryController::class, 'listAllCategories']
 
 Route::get('/categories/{category_id}', [CategoryController::class, 'listCategoryByID']
 )->name('routeListCategoryByID');
+
+//Rotas da Tag
+Route::get('/tags', [TagController::class, 'listAllTags']
+)->name('routeListAllTags');
+
+Route::get('/tags/{tag_id}', [TagController::class, 'listTagByID']
+)->name('routeListTagByID');
 
 // A url /create redirecionará para /register
 //Route::get('/create', [UserController::class, 'registerUser'])->name('routeRegisterUser');
