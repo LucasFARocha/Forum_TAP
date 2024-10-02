@@ -36,13 +36,18 @@ Route::match(['get', 'post'], '/register', [UserController::class, 'registerUser
 )->name('routeRegisterUser');
 
 // Rotas da Categoria
-Route::get('/categories', [CategoryController::class, 'listAllCategories']
-)->name('routeListAllCategories');
+// Route::get('/categories', [CategoryController::class, 'listAllCategories']
+// )->name('routeListAllCategories');
 
-Route::get('/categories/{category_id}', [CategoryController::class, 'listCategoryByID']
-)->name('routeListCategoryByID');
+Route::group(['prefix' => 'categories'], function(){
+    Route::get('/', [CategoryController::class, 'listAllCategories']
+    )->name('routeListAllCategories');
 
-//Rotas da Tag
+    Route::get('/{category_id}', [CategoryController::class, 'listCategoryByID']
+    )->name('routeListCategoryByID');
+});
+
+// Rotas da Tag
 Route::get('/tags', [TagController::class, 'listAllTags']
 )->name('routeListAllTags');
 
@@ -51,6 +56,7 @@ Route::get('/tags/{tag_id}', [TagController::class, 'listTagByID']
 
 // A url /create redirecionará para /register
 //Route::get('/create', [UserController::class, 'registerUser'])->name('routeRegisterUser');
+
 
 Route::middleware('auth')->group(function(){
     // O middleware garante a autenticação para executar as rotas dentro dele
@@ -82,5 +88,9 @@ Route::middleware('auth')->group(function(){
 
     Route::delete('/categories/{id}/delete', [CategoryController::class, 'deleteCategory']
     )->name('routeDeleteCategory');
+
+    // ----------- Rotas da Tag -----------
+    Route::match(['get', 'put'], '/create-tag', [TagController::class, 'createTag']
+    )->name('routeCreateTag');
 });
 

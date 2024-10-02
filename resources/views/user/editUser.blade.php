@@ -37,7 +37,7 @@
 @section('content')
     <!-- Área de editar usuário -->
     <form action="{{ route('routeEditUser', Auth::user()->id) }}" method="post">
-        <h2 class="text">Editar Usuário</h2>
+        <h2 class="text black">Editar Usuário</h2>
 
         @csrf <!--tag em php para o token funcionar-->
         @method('put')

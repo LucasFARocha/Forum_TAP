@@ -44,6 +44,11 @@
         .line {
             margin-bottom: 30px;
         }
+        .buttons {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
         .edit, .delete{
             width: max-content;
             height: max-content;
@@ -57,20 +62,14 @@
             margin-left: 15px;
             margin-top: 8px;
         }
-        .edit{
-            
-            background-color: #1b258d;
-        }
         .delete{
+            margin-top: 50px;
+            margin-right: 9px;
             background-color: rgb(163, 7, 7);
             border-style: none;
         }
         .delete:hover{
             background-color: rgb(182, 4, 4);
-        }
-        .buttons {
-            display: flex;
-            flex-direction: column;
         }
 
     </style>

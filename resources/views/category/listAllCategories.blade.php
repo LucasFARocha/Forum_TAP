@@ -50,7 +50,6 @@
             font-family: Arial, Helvetica, sans-serif;
             text-decoration: none;
             margin-top: 5px;
-            margin-left: 5px;
             border-radius: 5px;
             padding: 2px 10px 2px 10px;
         }

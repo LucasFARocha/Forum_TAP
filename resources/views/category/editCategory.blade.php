@@ -36,7 +36,7 @@
 
 @section('content')
     <form action="{{ route('routeEditCategory', [$category->id])}}" method="post">
-        <h2 class="text">Editar Categoria</h2>
+        <h2 class="text black">Editar Categoria</h2>
 
         @csrf <!--tag em php para o token funcionar-->
         @method('put')

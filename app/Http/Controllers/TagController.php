@@ -20,4 +20,10 @@ class TagController extends Controller
 
         return view('tag.listTagByID', ['tag' => $tag]);
     }
+
+    public function createTag(Request $request){
+        if($request->method() === 'GET'){
+            return view('tag.createTag');
+        }
+    }
 }

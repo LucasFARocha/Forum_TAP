@@ -36,7 +36,7 @@
 
 @section('content')
     <form action="{{ route('routeLoginUser') }}" method="post">
-        <h2 class="text">Entre com sua conta de usuário</h2>
+        <h2 class="text black">Entre com sua conta de usuário</h2>
         @csrf
 
         <div class="form">

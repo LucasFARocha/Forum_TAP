@@ -36,6 +36,9 @@
         .view-tags, .view-tag, .create-tag{
             
         } */
+        .create-category, .create-tag{
+            margin-left: 30px;
+        }
         .home{
             left: 0;
             margin-left: 30px;
@@ -64,6 +67,9 @@
         .text{
             font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             color: #ffffffdd;
+        }
+        .black{
+            color: black;
         }
     </style>
     @yield('style')

@@ -44,6 +44,11 @@
         .line {
             margin-bottom: 30px;
         }
+        .buttons {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
         .edit, .delete{
             width: max-content;
             height: max-content;
@@ -56,13 +61,6 @@
             padding: 5px;
             margin-left: 15px;
             margin-top: 8px;
-        }
-        .buttons {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        .edit{
         }
         .delete{
             margin-top: 50px;

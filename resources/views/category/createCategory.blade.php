@@ -34,7 +34,7 @@
 @endsection
 @section('content')
     <form action="{{ route('routeCreateCategory') }}" method="post">
-        <h2 class="text">Criar Categoria</h2>
+        <h2 class="text black">Criar Categoria</h2>
 
         @csrf <!--tag em php para o token funcionar-->
         @method('put')

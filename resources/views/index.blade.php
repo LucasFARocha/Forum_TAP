@@ -12,7 +12,7 @@
             padding: 5px 10px 5px 10px;
         }
         .topic-content{
-            font-size: 18pt;
+            font-size: 16pt;
         }
         .grid-container{
             display: grid;
@@ -20,7 +20,7 @@
         }
         .description{
             margin-top: 2%;
-            font-size: 13pt;
+            font-size: 12pt;
         }
         .view-topic{
             /* left: 0;

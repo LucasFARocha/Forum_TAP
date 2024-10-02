@@ -34,7 +34,7 @@
 @endsection
 @section('content')
     <form action="" method="post">
-        <h2 class="text">Criar Tópico</h2>
+        <h2 class="text black">Criar Tópico</h2>
 
         @csrf <!--tag em php para o token funcionar-->
         @method('put')

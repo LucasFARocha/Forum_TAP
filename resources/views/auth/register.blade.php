@@ -36,7 +36,7 @@
 
 @section('content')
     <form action="{{ route('routeRegisterUser') }}" method="post">
-        <h2 class="text">Registrar-se</h2>
+        <h2 class="text black">Registrar-se</h2>
         @csrf <!--tag em php para o token funcionar-->
 
         <div class="form">
