@@ -9,8 +9,8 @@
             width: 100vw;
             height: 90vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            /* justify-content: center; */
+            /* align-items: center; */
         }
         .card {
             display: flex;
