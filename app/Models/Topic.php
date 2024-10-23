@@ -15,10 +15,17 @@ class Topic extends Post
         'status',
     ];
 
+    // public function post()
+    // {
+    //     return $this->belongsTo(Post::class);
+    // }
+
+    // Relacionamento polimórfico
     public function post()
     {
-        return $this->belongsTo(Post::class);
+        return $this->morphOne(Post::class, 'postable');
     }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -47,6 +47,10 @@ Route::group(['prefix' => 'categories'], function(){
     )->name('routeListCategoryByID');
 });
 
+// Route::group(['prefix' => 'categories', 'middleware' => ['auth']], function(){
+
+// });
+
 // Rotas da Tag
 Route::get('/tags', [TagController::class, 'listAllTags']
 )->name('routeListAllTags');

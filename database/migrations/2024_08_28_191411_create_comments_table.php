@@ -14,9 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            // O id dessa classe referencia o id da classe post
-            $table->unsignedBigInteger('id')->primary();
-            $table->foreign('id')->references('id')->on('posts');
+            $table->id();
             
             $table->text('content');
             $table->timestamps();

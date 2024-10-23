@@ -48,7 +48,15 @@
             <input type="text" id="description" name="description" placeholder="Descrição do Tópico"
                 value="{{ old('description') }}" required>
             @error('description') <span>{{ $message }}</span> @enderror
-
+            
+            <input type="text" id="status" name="status" placeholder="Status do Tópico"
+            value="{{ old('status') }}" required>
+            @error('status') <span>{{ $message }}</span> @enderror
+            
+            <input type="text" id="image" name="image" placeholder="Imagem do Tópico"
+            value="{{ old('image') }}" required>
+            @error('image') <span>{{ $message }}</span> @enderror
+            
             <select name="category" id="category">
                 <option value="none"></option>
                 @foreach($categories as $category)

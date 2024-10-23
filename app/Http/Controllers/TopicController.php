@@ -11,10 +11,10 @@ use App\Models\Category;
 class TopicController extends Controller
 {
     //
-    public function index(){
-        $posts  = Post::all();
-        return $posts;
-    }
+    // public function index(){
+    //     $topics  = Topic::all();
+    //     return $topics;
+    // }
 
     public function listAllTopics(){
         $topics = Topic::all();
@@ -36,7 +36,24 @@ class TopicController extends Controller
         }
         else
         {
-            
+            $request->validate([
+                'title' => 'required|string|max:50',
+                'description' => 'required|string|255',
+                'status' => 'required|int',
+                'image' => 'required|string'
+            ]);
+
+            $topic = Topic::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'status' => $request->status
+            ]);
+
+            $post = new Post([
+                'image' => $request->image
+            ]);
+
+            $topic->post()->save($post);
         }
     }
 }

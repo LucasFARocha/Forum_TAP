@@ -13,6 +13,12 @@ class Comment extends Post
         'content'
     ];
 
+    // Relacionamento polimórfico
+    public function post()
+    {
+        return $this->morphOne(Post::class, 'postable');
+    }
+    
     public function topic()
     {
         return $this->belongsTo(Topic::class);
