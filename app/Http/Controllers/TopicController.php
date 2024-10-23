@@ -38,15 +38,17 @@ class TopicController extends Controller
         {
             $request->validate([
                 'title' => 'required|string|max:50',
-                'description' => 'required|string|255',
+                'description' => 'required|string|max:255',
                 'status' => 'required|int',
-                'image' => 'required|string'
+                'image' => 'required|string',
+                'category' => 'required'
             ]);
 
             $topic = Topic::create([
                 'title' => $request->title,
                 'description' => $request->description,
-                'status' => $request->status
+                'status' => $request->status,
+                'category_id' => $request->category
             ]);
 
             $post = new Post([
@@ -54,6 +56,8 @@ class TopicController extends Controller
             ]);
 
             $topic->post()->save($post);
+
+            return redirect()->route('routeHome');
         }
     }
 }
