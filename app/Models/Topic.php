@@ -13,6 +13,7 @@ class Topic extends Post
         'title',
         'description',
         'status',
+        'category_id'
     ];
 
     // public function post()
@@ -30,7 +31,8 @@ class Topic extends Post
     {
         return $this->belongsTo(Category::class);
     }
-    public function tags(){
+    public function tags()
+    {
         return $this->belongsToMany(Tag::class);
     }
     public function comments()

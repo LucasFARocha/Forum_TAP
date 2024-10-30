@@ -98,9 +98,9 @@
                     <a href="" class="edit">Editar Tópico &nbsp;
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>
-                    <form action=""> <!-- method="post" -->
+                    <form action="{{ route('routeDeleteTopic', [$topic->id]) }}" method="post">
                         @csrf
-                        {{-- @method('delete') --}}
+                        @method('delete')
         
                         <button class="delete" type="submit">Excluir Tópico &nbsp;
                             <i class="fa-solid fa-trash"></i>

@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-abstract class Post extends Model
+// Post deixou de ser uma classe abstrata
+class Post extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'image'
+        'image',
+        'user_id'
     ];
 
     // public function topic()

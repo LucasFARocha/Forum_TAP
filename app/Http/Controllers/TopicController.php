@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Topic;
 use App\Models\Category;
+
 
 class TopicController extends Controller
 {
@@ -51,13 +53,27 @@ class TopicController extends Controller
                 'category_id' => $request->category
             ]);
 
-            $post = new Post([
+            $topic->post()->create([
+                'user_id' => Auth::id(),
                 'image' => $request->image
             ]);
 
-            $topic->post()->save($post);
+            // $post = new Post([
+            //     'image' => $request->image
+            // ]);
+
+            // $topic->post()->save($post);
 
             return redirect()->route('routeHome');
         }
+    }
+
+    public function deleteTopic(Request $request, $id)
+    {
+        Topic::where('id', $id)->delete();
+
+        return redirect()
+            ->route('routeHome')
+            ->with('message', 'Excluído com sucesso!');
     }
 }

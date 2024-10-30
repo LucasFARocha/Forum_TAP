@@ -83,6 +83,9 @@ Route::middleware('auth')->group(function(){
     Route::match(['get', 'put'], '/create-topic', [TopicController::class, 'createTopic']
     )->name('routeCreateTopic');
 
+    Route::delete('/topics/{id}/delete', [TopicController::class, 'deleteTopic']
+    )->name('routeDeleteTopic');
+
     // ----------- Rotas da Categoria -----------
     Route::match(['get', 'put'], '/create-category', [CategoryController::class, 'createCategory']
     )->name('routeCreateCategory');

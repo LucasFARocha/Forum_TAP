@@ -33,7 +33,7 @@
     </style>
 @endsection
 @section('content')
-    <form action="" method="post">
+    <form action="{{ route('routeCreateTopic') }}" method="post">
         <h2 class="text black">Criar Tópico</h2>
 
         @csrf <!--tag em php para o token funcionar-->
@@ -58,9 +58,9 @@
             @error('image') <span>{{ $message }}</span> @enderror
             
             <select name="category" id="category">
-                <option value="none"></option>
+                <!-- <option value="none"></option> -->
                 @foreach($categories as $category)
-                    <option value="{{ $category->title }}">{{ $category->title }}</option>
+                    <option value="{{ $category->id }}">{{ $category->title }}</option>
                 @endforeach
             </select>
 
