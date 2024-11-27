@@ -31,6 +31,10 @@
             height: fit-content;
             width: 80%;
         }
+        .picture{
+            max-width: 200px;
+            max-height: 200px;
+        }
         .edit, .delete{
             left: 0;
             right: 0;
@@ -86,6 +90,11 @@
                         <tr>
                             <td>Email: </td>
                             <td>{{ $user->email }}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="picture" src="/storage/{{ $user->photo }}" alt="Foto de Perfil">
+                            </td>
                         </tr>
                     </tbody>
                 </table>

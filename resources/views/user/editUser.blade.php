@@ -15,7 +15,7 @@
             margin-bottom: 10px;
             font-size: 12pt;
         }
-        input[type=name], [type=email], input[type=password] {
+        input[type=name], [type=email], input[type=password],input[type=file] {
             padding: 12px 20px;
             display: inline-block;
             border: 1px solid #ccc;
@@ -36,7 +36,7 @@
 
 @section('content')
     <!-- Área de editar usuário -->
-    <form action="{{ route('routeEditUser', Auth::user()->id) }}" method="post">
+    <form action="{{ route('routeEditUser', Auth::user()->id) }}" method="post" enctype="multipart/form-data">
         <h2 class="text black">Editar Usuário</h2>
 
         @csrf <!--tag em php para o token funcionar-->
@@ -50,10 +50,12 @@
     
             <input type="email" id="email" name="email" placeholder="Email"
                 value="{{ old('email') }}">
-            @error('email') <span>{{ $message }}</span> 
-            @enderror
+            @error('email') <span>{{ $message }}</span> @enderror
     
             <input type="password" id="password" name="password" placeholder="Senha">
+            @error('password') <span>{{ $message }}</span> @enderror
+            
+            <input type="file" id="image" name="image">
             @error('password') <span>{{ $message }}</span> @enderror
     
             <input type="submit" value="Editar">

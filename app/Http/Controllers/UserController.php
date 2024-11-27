@@ -59,8 +59,9 @@ class UserController extends Controller
         }
         else
         {
+            
             $user = User::where('id', $uid)->first();
-    
+            
             if($request->name != ''){
                 $request->validate(['name' => 'string|max:255']);
                 $user->name = $request->name;
@@ -74,6 +75,15 @@ class UserController extends Controller
                 $request->validate(['password' => 'string|min:8']);
                 $user->password = Hash::make($request->password);
             }
+            if($request->image != null)
+            {
+                $request->validate(['image' => 'image|mimes:jpeg,jpg,png,gif|max:2048']);
+                
+                $imagePath = $request->file('image')->store('images', 'public');
+                $user->photo = $imagePath;
+            }
+            
+
             $user->save();
             
             return redirect()

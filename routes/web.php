@@ -52,11 +52,18 @@ Route::group(['prefix' => 'categories'], function(){
 // });
 
 // Rotas da Tag
-Route::get('/tags', [TagController::class, 'listAllTags']
-)->name('routeListAllTags');
+Route::group(['prefix' => 'tags'], function(){
+    Route::get('/', [TagController::class, 'listAllTags']
+    )->name('routeListAllTags');
+    
+    Route::get('/{tag_id}', [TagController::class, 'listTagByID']
+    )->name('routeListTagByID');
+});
+// Route::get('/tags', [TagController::class, 'listAllTags']
+// )->name('routeListAllTags');
 
-Route::get('/tags/{tag_id}', [TagController::class, 'listTagByID']
-)->name('routeListTagByID');
+// Route::get('/tags/{tag_id}', [TagController::class, 'listTagByID']
+// )->name('routeListTagByID');
 
 // A url /create redirecionará para /register
 //Route::get('/create', [UserController::class, 'registerUser'])->name('routeRegisterUser');
@@ -66,18 +73,20 @@ Route::middleware('auth')->group(function(){
     // O middleware garante a autenticação para executar as rotas dentro dele
 
     // ----------- Rotas do usuário -----------
-    Route::get('/users', [UserController::class, 'listAllUsers']
-    )->name('routeListAllUsers');
-
-    Route::get('/users/{uid}', [UserController::class, 'listUserByID']
-    )->name('routeListUserByID');
-
-    Route::match(['get', 'put'], '/users/{uid}/edit', [UserController::class, 'editUser']
-    )->name('routeEditUser');
-    //Route::put('/users/{uid}/edit', [UserController::class, 'editUser'])->name('routeEditUser');
-
-    Route::delete('/users/{uid}/delete', [UserController::class, 'deleteUser']
-    )->name('routeDeleteUser');
+    Route::group(['prefix' => '/users'], function(){
+        Route::get('/', [UserController::class, 'listAllUsers']
+        )->name('routeListAllUsers');
+    
+        Route::get('/{uid}', [UserController::class, 'listUserByID']
+        )->name('routeListUserByID');
+    
+        Route::match(['get', 'put'], '/{uid}/edit', [UserController::class, 'editUser']
+        )->name('routeEditUser');
+        //Route::put('/users/{uid}/edit', [UserController::class, 'editUser'])->name('routeEditUser');
+    
+        Route::delete('/{uid}/delete', [UserController::class, 'deleteUser']
+        )->name('routeDeleteUser');
+    });
     
     // ----------- Rotas do Tópico -----------
     Route::match(['get', 'put'], '/create-topic', [TopicController::class, 'createTopic']
