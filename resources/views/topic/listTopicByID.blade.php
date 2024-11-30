@@ -8,23 +8,14 @@
     @if($topic != null)
         <div class="main">
             <div class="card">
-                <div class="table">
-                    <p class="title">Informações do Tópico</p>
-                    <div class="content">
-                        <div class="line">
-                            <h4>Título: </h4>
-                            <p>{{ $topic->title }}</p>
-                        </div>
-                        <div class="line">
-                            <h4>Descrição: </h4>
-                            <p>{{ $topic->description }}</p>
-                        </div>
-                        <div class="line">
-                            <p>Criado {{ $topic->created_at->diffForHumans() }}<p>
-                        </div>
-                    </div>
+                <div class="head">
+                    <h4 class="title">{{ $topic->title }}</h4>
                 </div>
-                @if(Auth::check() and Auth::user()->id == $topic->post->user_id)
+                <div class="content">
+                    <p class="description">{{ $topic->description }}</p>
+                    <p class="created-at">Criado {{ $topic->created_at->diffForHumans() }} por: {{$user->name}}<p>
+                </div>
+                @if(Auth::check() && Auth::user()->id == $topic->post->user_id)
                     <div class="buttons"> 
                         <a href="" class="edit">Editar Tópico &nbsp;
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -40,13 +31,14 @@
                     </div>
                 @endif
             </div>
-            <a href="" class="create-comment">
-                <i class="fa-solid fa-plus"></i>
-                &nbsp; Comentar
-            </a>
+            @if(Auth::check())
+                <a href="" class="create-comment">
+                    <i class="fa-solid fa-plus"></i>
+                    &nbsp; Comentar
+                </a>
+            @endif
         </div>
     @else
         <div>Tópico não encontrado!</div>
-
     @endif
 @endsection

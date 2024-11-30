@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Topic;
 use App\Models\Category;
+use App\Models\User;
 
 
 class TopicController extends Controller
@@ -26,8 +27,9 @@ class TopicController extends Controller
 
     public function listTopicByID($topic_id){
         $topic = Topic::where('id', $topic_id)->first();
+        $user = User::where('id', $topic->post->user_id)->first();
 
-        return view('topic.listTopicByID', ['topic' => $topic]);
+        return view('topic.listTopicByID', ['topic' => $topic, 'user' => $user]);
     }
 
     public function createTopic(Request $request){
