@@ -36,9 +36,6 @@
     <form action="{{ route('routeCreateCategory') }}" method="post">
         <h2 class="text black">Criar Categoria</h2>
 
-        @csrf <!--tag em php para o token funcionar-->
-        @method('put')
-
         <div class="form">
             <input type="text" id="title" name="title" placeholder="Título da Categoria"
                 value="{{ old('title') }}" required>

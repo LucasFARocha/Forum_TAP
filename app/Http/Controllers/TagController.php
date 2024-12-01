@@ -25,5 +25,17 @@ class TagController extends Controller
         if($request->method() === 'GET'){
             return view('tag.createTag');
         }
+        else
+        {
+            $request->validate([
+                'title' => 'required|string|max:100'
+            ]);
+
+            $tag = Tag::create([
+                'title' => $request->title
+            ]);
+
+            return redirect()->route('routeListAllTags');
+        }
     }
 }

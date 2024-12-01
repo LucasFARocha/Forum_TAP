@@ -89,14 +89,14 @@ Route::middleware('auth')->group(function(){
     });
     
     // ----------- Rotas do Tópico -----------
-    Route::match(['get', 'put'], '/create-topic', [TopicController::class, 'createTopic']
+    Route::match(['get', 'post'], '/create-topic', [TopicController::class, 'createTopic']
     )->name('routeCreateTopic');
 
     Route::delete('/topics/{id}/delete', [TopicController::class, 'deleteTopic']
     )->name('routeDeleteTopic');
 
     // ----------- Rotas da Categoria -----------
-    Route::match(['get', 'put'], '/create-category', [CategoryController::class, 'createCategory']
+    Route::match(['get', 'post'], '/create-category', [CategoryController::class, 'createCategory']
     )->name('routeCreateCategory');
 
     Route::match(['get', 'put'], '/categories/{id}/edit', [CategoryController::class, 'editCategory']
@@ -106,7 +106,10 @@ Route::middleware('auth')->group(function(){
     )->name('routeDeleteCategory');
 
     // ----------- Rotas da Tag -----------
-    Route::match(['get', 'put'], '/create-tag', [TagController::class, 'createTag']
+    Route::match(['get', 'post'], '/create-tag', [TagController::class, 'createTag']
     )->name('routeCreateTag');
+
+    Route::match(['get', 'put'], '/tegas/{id}/edit', [TagController::class, 'editTag']
+    )->name('routeEditTag');
 });
 
