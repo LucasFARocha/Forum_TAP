@@ -90,11 +90,11 @@
                 </div>
                 @if(Auth::check())
                     <div class="buttons">
-                        <a href="" class="edit">Editar Tag &nbsp;
+                        <a href="{{route('routeEditTag', $tag->id)}}" class="edit">Editar Tag &nbsp;
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         
-                        <form action="" method="post">
+                        <form action="{{route('routeDeleteTag', $tag->id)}}" method="post">
                             @csrf
                             @method('delete')
             

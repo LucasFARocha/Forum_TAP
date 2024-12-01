@@ -38,4 +38,32 @@ class TagController extends Controller
             return redirect()->route('routeListAllTags');
         }
     }
+
+    public function editTag(Request $request, $id){
+        $tag = Tag::where('id', $id)->first();
+
+        if($request->method() === 'GET'){
+            return view('tag.editTag', ['tag' => $tag]);
+        }
+        else
+        {
+            if($request->title != ''){
+                $request->validate(['title' => 'string|max:100']);
+                $tag->title = $request->title;
+            }
+            $tag->save();
+
+            return redirect()
+                ->route('routeListTagByID', [$tag->id])
+                ->with('message', 'Atualizado com sucesso!');
+        }
+    }
+
+    public function deleteTag(Request $request, $id){
+        Tag::where('id', $id)->delete();
+
+        return redirect()
+            ->route('routeListAllTags')
+            ->with('message', 'Excluído com sucesso!');
+    }
 }

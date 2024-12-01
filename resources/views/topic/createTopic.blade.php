@@ -1,6 +1,6 @@
 @extends('layouts.header')
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/topic/createTopic.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layouts/form.css') }}">
     <form action="{{ route('routeCreateTopic') }}" method="post">
         <h2 class="text black">Criar Tópico</h2>
 

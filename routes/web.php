@@ -109,7 +109,10 @@ Route::middleware('auth')->group(function(){
     Route::match(['get', 'post'], '/create-tag', [TagController::class, 'createTag']
     )->name('routeCreateTag');
 
-    Route::match(['get', 'put'], '/tegas/{id}/edit', [TagController::class, 'editTag']
+    Route::match(['get', 'put'], '/tags/{id}/edit', [TagController::class, 'editTag']
     )->name('routeEditTag');
+
+    Route::delete('/tags/{id}/delete', [TagController::class, 'deleteTag']
+    )->name('routeDeleteTag');
 });
 

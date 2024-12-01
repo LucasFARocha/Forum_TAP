@@ -1,11 +1,10 @@
 @extends('layouts.header')
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/tag/createTag.css') }}">
-    <form action=" " method="post">
+    <link rel="stylesheet" href="{{ asset('css/layouts/form.css') }}">
+    <form action="{{route('routeCreateTag')}}" method="post">
         <h2 class="text black">Criar Tag</h2>
 
         @csrf <!--tag em php para o token funcionar-->
-        @method('put')
 
         <div class="form">
             <input type="text" id="title" name="title" placeholder="Título da Tag"
