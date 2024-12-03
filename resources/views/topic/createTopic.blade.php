@@ -31,6 +31,12 @@
                 @endforeach
             </select>
 
+            <select name="category" id="category" size="3" multiple>
+                @foreach($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                @endforeach
+            </select>
+
             <input type="submit" value="Confirmar">
         </div>
     </form>
