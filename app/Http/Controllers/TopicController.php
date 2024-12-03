@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Topic;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Models\User;
 
 
@@ -21,22 +22,29 @@ class TopicController extends Controller
 
     public function listAllTopics(){
         $topics = Topic::all();
+        $categories = Category::all();
         
-        return view('index', ['topics' => $topics]);
+        return view('index', ['topics' => $topics, 'categories' => $categories]);
     }
 
     public function listTopicByID($topic_id){
         $topic = Topic::where('id', $topic_id)->first();
         $user = User::where('id', $topic->post->user_id)->first();
+        $category = Category::where('id', $topic->category_id)->first();
 
-        return view('topic.listTopicByID', ['topic' => $topic, 'user' => $user]);
+        return view('topic.listTopicByID', [
+            'topic' => $topic, 
+            'user' => $user, 
+            'category' => $category
+        ]);
     }
 
     public function createTopic(Request $request){
         if($request->method() === 'GET'){
             $categories = Category::all();
+            $tags = Tag::all();
 
-            return view('topic.createTopic', ['categories' => $categories]);
+            return view('topic.createTopic', ['categories' => $categories, 'tags' => $tags]);
         }
         else
         {

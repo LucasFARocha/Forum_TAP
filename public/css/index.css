@@ -5,7 +5,7 @@
     margin: 2% 12% 2% 12%;
     border-radius: 5px;
     background-color: rgb(65, 84, 189);
-    padding: 5px 10px 5px 10px;
+    padding: 10px 15px 10px 15px;
 }
 .topic-content{
     font-size: 16pt;
@@ -14,9 +14,22 @@
     display: grid;
     grid-template-columns: max-content max-content max-content;
 }
+.category{
+    font-size: 14pt;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffffdd;
+    background-color: #1b258d;
+    border-radius: 5px;
+    padding: 2px 10px 2px 10px;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    margin-right: 15px;
+}
 .description{
     margin-top: 2%;
-    font-size: 12pt;
+    font-size: 13pt;
 }
 .view-topic{
     /* left: 0;

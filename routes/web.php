@@ -59,11 +59,6 @@ Route::group(['prefix' => 'tags'], function(){
     Route::get('/{tag_id}', [TagController::class, 'listTagByID']
     )->name('routeListTagByID');
 });
-// Route::get('/tags', [TagController::class, 'listAllTags']
-// )->name('routeListAllTags');
-
-// Route::get('/tags/{tag_id}', [TagController::class, 'listTagByID']
-// )->name('routeListTagByID');
 
 // A url /create redirecionará para /register
 //Route::get('/create', [UserController::class, 'registerUser'])->name('routeRegisterUser');

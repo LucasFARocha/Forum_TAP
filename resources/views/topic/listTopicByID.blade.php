@@ -9,6 +9,7 @@
         <div class="main">
             <div class="card">
                 <div class="head">
+                    <div class="category">{{ $category->title }}</div>
                     <h4 class="title">{{ $topic->title }}</h4>
                 </div>
                 <div class="content">

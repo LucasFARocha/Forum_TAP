@@ -3,6 +3,8 @@
     <link rel="stylesheet" href="{{ asset('css/layouts/form.css') }}">
     <form action="{{ route('routeCreateTopic') }}" method="post">
         <h2 class="text black">Criar Tópico</h2>
+        
+        @csrf
 
         <div class="form">
             <input type="text" id="title" name="title" placeholder="Título do Tópico"

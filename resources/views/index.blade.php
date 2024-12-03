@@ -28,6 +28,13 @@
                 <div class="topic-content text">
 
                     <div class="grid-container">
+                        
+                        @foreach($categories as $category)
+                            @if($category->id == $topic->category_id)
+                                <div class="category">{{ $category->title }}</div>
+                            @endif
+                        @endforeach
+
                         <div class="title">
                             <h2>{{ $topic->title }}</h2>
                         </div>
