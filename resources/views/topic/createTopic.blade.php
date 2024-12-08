@@ -12,8 +12,8 @@
             <!--Essa área só existe em caso de erro-->
             @error('title') <span>{{ $message }}</span> @enderror
 
-            <input type="text" id="description" name="description" placeholder="Descrição do Tópico"
-                value="{{ old('description') }}" required>
+            <textarea type="text" id="description" name="description" placeholder="Descrição do Tópico"
+                value="{{ old('description') }}" required></textarea>
             @error('description') <span>{{ $message }}</span> @enderror
             
             <input type="text" id="status" name="status" placeholder="Status do Tópico"
@@ -31,7 +31,7 @@
                 @endforeach
             </select>
 
-            <select name="category" id="category" size="3" multiple>
+            <select name="tags" id="tags" size="3" multiple>
                 @foreach($tags as $tag)
                     <option value="{{ $tag->id }}">{{ $tag->title }}</option>
                 @endforeach

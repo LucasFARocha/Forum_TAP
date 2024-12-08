@@ -53,7 +53,8 @@ class TopicController extends Controller
                 'description' => 'required|string|max:255',
                 'status' => 'required|int',
                 'image' => 'required|string',
-                'category' => 'required'
+                'category' => 'required',
+                'tags' => 'required'
             ]);
 
             $topic = Topic::create([
@@ -63,10 +64,13 @@ class TopicController extends Controller
                 'category_id' => $request->category
             ]);
 
+            $topic->tags()->sync($request->tags);
+
             $topic->post()->create([
                 'user_id' => Auth::id(),
                 'image' => $request->image
             ]);
+
 
             // $post = new Post([
             //     'image' => $request->image
@@ -80,7 +84,10 @@ class TopicController extends Controller
 
     public function deleteTopic(Request $request, $id)
     {
-        Topic::where('id', $id)->delete();
+        // Topic::where('id', $id)->delete();
+        $topic = Topic::where('id', $id)->first();
+        $topic->tags()->detach();
+        $topic->delete();
 
         return redirect()
             ->route('routeHome')

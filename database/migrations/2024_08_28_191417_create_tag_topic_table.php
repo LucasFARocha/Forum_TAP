@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('topic_tags', function (Blueprint $table) {
+        Schema::create('tag_topic', function (Blueprint $table) {
             $table->unsignedBigInteger('tag_id');
             $table->unsignedBigInteger('topic_id');
             $table->foreign('tag_id')->references('id')->on('tags');
