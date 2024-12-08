@@ -31,11 +31,13 @@ class TopicController extends Controller
         $topic = Topic::where('id', $topic_id)->first();
         $user = User::where('id', $topic->post->user_id)->first();
         $category = Category::where('id', $topic->category_id)->first();
+        $tags = $topic->tags->pluck('title');
 
         return view('topic.listTopicByID', [
             'topic' => $topic, 
             'user' => $user, 
-            'category' => $category
+            'category' => $category,
+            'tags' => $tags
         ]);
     }
 
@@ -48,27 +50,33 @@ class TopicController extends Controller
         }
         else
         {
+            $imagePath = '';
+            
             $request->validate([
                 'title' => 'required|string|max:50',
                 'description' => 'required|string|max:255',
-                'status' => 'required|int',
-                'image' => 'required|string',
                 'category' => 'required',
-                'tags' => 'required'
+                'tags' => 'required|array'
             ]);
+
+            if($request->image != null)
+            {
+                $request->validate(['image' => 'image|mimes:jpeg,jpg,png,gif|max:2048']);
+
+                $imagePath = $request->file('image')->store('images', 'public');
+            }
 
             $topic = Topic::create([
                 'title' => $request->title,
                 'description' => $request->description,
-                'status' => $request->status,
                 'category_id' => $request->category
             ]);
 
             $topic->tags()->sync($request->tags);
-
+            
             $topic->post()->create([
                 'user_id' => Auth::id(),
-                'image' => $request->image
+                'image' => $imagePath
             ]);
 
 
@@ -79,6 +87,60 @@ class TopicController extends Controller
             // $topic->post()->save($post);
 
             return redirect()->route('routeHome');
+        }
+    }
+
+    public function editTopic(Request $request, $id)
+    {
+        $topic = Topic::where('id', $id)->first();
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        if($request->method() === 'GET')
+        {
+            return view('topic.editTopic', [
+                'topic' => $topic,
+                'categories' => $categories, 
+                'tags' => $tags
+            ]);
+        }
+        else
+        {
+            if($request->title != '')
+            {
+                $request->validate(['title' => 'string|max:50']);
+                $topic->title = $request->title;
+            }
+            if($request->description != '')
+            {
+                $request->validate(['description' => 'string|max:255']);
+                $topic->description = $request->description;
+            }
+
+            // Não há validação para categoria ao editar
+            $topic->category_id = $request->category;
+
+            if($request->tags != '')
+            {
+                $request->validate(['tags' => 'array']);
+                $topic->tags()->sync($request->tags);
+            }
+            if($request->image != null)
+            {
+                $request->validate(['image' => 'image|mimes:jpeg,jpg,png,gif|max:2048']);
+
+                $imagePath = $request->file('image')->store('images', 'public');
+                $topic->post()->update([
+                    'image' => $imagePath
+                ]);
+            }
+
+            $topic->save();
+
+            return redirect()
+                ->route('routeListTopicByID', [$topic->id])
+                ->with('message', 'Atualizado com sucesso!');
+
         }
     }
 

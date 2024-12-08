@@ -11,7 +11,7 @@ input, select, textarea{
     margin-bottom: 10px;
     font-size: 12pt;
 }
-input[type=text], select, textarea{
+input[type=text], input[type=file], select, textarea{
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;

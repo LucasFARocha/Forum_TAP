@@ -87,6 +87,9 @@ Route::middleware('auth')->group(function(){
     Route::match(['get', 'post'], '/create-topic', [TopicController::class, 'createTopic']
     )->name('routeCreateTopic');
 
+    Route::match(['get', 'post'], '/topics/{id}/edit', [TopicController::class, 'editTopic']
+    )->name('routeEditTopic');
+
     Route::delete('/topics/{id}/delete', [TopicController::class, 'deleteTopic']
     )->name('routeDeleteTopic');
 

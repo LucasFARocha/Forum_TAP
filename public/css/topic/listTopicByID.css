@@ -22,7 +22,7 @@ body {
     margin-top: 2%;
     /* align-items: center; */
 }
-.category{
+.category, .tag{
     font-size: 14pt;
     font-family: Arial, Helvetica, sans-serif;
     color: #ffffffdd;
@@ -35,11 +35,25 @@ body {
     width: fit-content;
     /* display: flex; */
 }
+.tags-container{
+    display: grid;
+    grid-template-columns: repeat(10, auto);
+    column-gap: 5px;
+    margin-bottom: 10px;
+}
+.tag{
+    font-size: 10pt;
+    background-color: rgb(7, 69, 161);
+    font-family: Arial, Helvetica, sans-serif;
+    /* color: #ffffffdd; */
+    font-size: 10pt;
+}
 .title{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 18pt;
     color: white;
     text-align: center;
+    margin-top: 10px;
     margin-bottom: 50px;
 }
 .content{
@@ -47,6 +61,13 @@ body {
     font-size: 14pt;
     color: white;
     border: none;
+}
+.topic-image{
+    margin-top: 10px;
+    max-width: 500px;
+    max-height: 220px;
+    border-radius: 10%;
+    border: 1px solid #14143b;
 }
 .created-at{
     margin-top: 30px;

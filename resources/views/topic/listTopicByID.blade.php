@@ -9,16 +9,25 @@
         <div class="main">
             <div class="card">
                 <div class="head">
+                    <div class="tags-container">
+                        @foreach($tags as $tag)
+                            <div class="tag">#{{$tag}}</div>
+                        @endforeach
+                    </div>
+
                     <div class="category">{{ $category->title }}</div>
                     <h4 class="title">{{ $topic->title }}</h4>
                 </div>
                 <div class="content">
                     <p class="description">{{ $topic->description }}</p>
+                    @if($topic->post->image != null)
+                        <img class="topic-image" src="/storage/{{ $topic->post->image }}" alt="Imagem do tópico">
+                    @endif
                     <p class="created-at">Criado {{ $topic->created_at->diffForHumans() }} por: {{$user->name}}<p>
                 </div>
                 @if(Auth::check() && Auth::user()->id == $topic->post->user_id)
                     <div class="buttons"> 
-                        <a href="" class="edit">Editar Tópico &nbsp;
+                        <a href="{{ route('routeEditTopic', [$topic->id]) }}" class="edit">Editar Tópico &nbsp;
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         <form action="{{ route('routeDeleteTopic', [$topic->id]) }}" method="post">
