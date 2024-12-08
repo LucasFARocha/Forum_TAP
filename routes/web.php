@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 
@@ -24,6 +25,9 @@ Route::get('/', [TopicController::class, 'listAllTopics']
 
 Route::get('/topics/{topic_id}', [TopicController::class, 'listTopicByID']
 )->name('routeListTopicByID');
+
+Route::post('/topics/{topic_id}', [CommentController::class, 'createComment']
+)->name('routeCreateComment');
 
 // Rotas de Autenticação do Usuário; Login, Logout e Registro
 Route::match(['get', 'post'], '/login', [AuthController::class, 'loginUser']
@@ -92,6 +96,10 @@ Route::middleware('auth')->group(function(){
 
     Route::delete('/topics/{id}/delete', [TopicController::class, 'deleteTopic']
     )->name('routeDeleteTopic');
+
+    // ----------- Rotas do Comentário -----------
+    // Route::post('/create-comment', [CommentController::class, 'createComment']
+    // )->name('routeCreateComment');
 
     // ----------- Rotas da Categoria -----------
     Route::match(['get', 'post'], '/create-category', [CategoryController::class, 'createCategory']

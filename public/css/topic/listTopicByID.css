@@ -15,7 +15,7 @@ body {
     background-color: rgb(65, 84, 189);
     border-radius: 18px;
     box-shadow: 1px 1px 8px 0 grey;
-    width: fit-content;
+    width: 900px;
     height: fit-content;
     max-width: 900px;
     padding: 20px 50px 20px 50px;
@@ -62,7 +62,7 @@ body {
     color: white;
     border: none;
 }
-.topic-image{
+.image{
     margin-top: 10px;
     max-width: 500px;
     max-height: 220px;
@@ -120,6 +120,8 @@ body {
 }
 .create-comment{
     position: relative;
+    /* margin-right: auto;
+    margin-left: 190px; */
     margin-bottom: 100px;
 }
 .comments{

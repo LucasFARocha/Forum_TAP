@@ -10,6 +10,7 @@ use App\Models\Topic;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Comment;
 
 
 class TopicController extends Controller
@@ -29,15 +30,20 @@ class TopicController extends Controller
 
     public function listTopicByID($topic_id){
         $topic = Topic::where('id', $topic_id)->first();
-        $user = User::where('id', $topic->post->user_id)->first();
+        $tags = $topic->tags;
         $category = Category::where('id', $topic->category_id)->first();
-        $tags = $topic->tags->pluck('title');
+        $user = User::where('id', $topic->post->user_id)->first();
+        $users = User::all();
+
+        $comments = $topic->comments;
 
         return view('topic.listTopicByID', [
             'topic' => $topic, 
-            'user' => $user, 
+            'tags' => $tags,
             'category' => $category,
-            'tags' => $tags
+            'user' => $user,
+            'users' => $users,
+            'comments' => $comments
         ]);
     }
 
@@ -149,6 +155,14 @@ class TopicController extends Controller
         // Topic::where('id', $id)->delete();
         $topic = Topic::where('id', $id)->first();
         $topic->tags()->detach();
+        $topic->post()->delete();
+
+        foreach ($topic->comments as $comment) 
+        {
+            $comment->post()->delete();
+            $comment->delete();
+        }
+
         $topic->delete();
 
         return redirect()

@@ -10,7 +10,8 @@ class Comment extends Post
     use HasFactory;
 
     protected $fillable = [
-        'content'
+        'content',
+        'topic_id'
     ];
 
     // Relacionamento polimórfico

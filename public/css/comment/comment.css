@@ -1,0 +1,32 @@
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+    max-width: 900px;
+}
+textarea, input[type=file], input[type=submit]{
+    margin-left: auto;
+    min-width: 900px;
+    max-width: 900px;
+    width: 900px;
+    border-radius: 10px;
+}
+input[type=file]{
+    background-color: rgb(255, 255, 255);
+}
+input[type=submit]{
+    background-color: #1b258d;
+}
+.comments{
+    display: flex;
+    flex-direction: column;
+}
+.comment-user{
+    margin-bottom: 10px;
+}
+.comment-content{
+    background-color: #1b258d;
+    box-shadow: none;
+}
