@@ -26,8 +26,13 @@ Route::get('/', [TopicController::class, 'listAllTopics']
 Route::get('/topics/{topic_id}', [TopicController::class, 'listTopicByID']
 )->name('routeListTopicByID');
 
+// Rotas do Comentário
+Route::get('/comments/{comment_id}', [CommentController::class, 'listCommentByID']
+)->name('routeListCommentByID');
+
 Route::post('/topics/{topic_id}', [CommentController::class, 'createComment']
 )->name('routeCreateComment');
+
 
 // Rotas de Autenticação do Usuário; Login, Logout e Registro
 Route::match(['get', 'post'], '/login', [AuthController::class, 'loginUser']
@@ -52,7 +57,7 @@ Route::group(['prefix' => 'categories'], function(){
 });
 
 // Route::group(['prefix' => 'categories', 'middleware' => ['auth']], function(){
-
+    
 // });
 
 // Rotas da Tag
@@ -70,19 +75,19 @@ Route::group(['prefix' => 'tags'], function(){
 
 Route::middleware('auth')->group(function(){
     // O middleware garante a autenticação para executar as rotas dentro dele
-
+    
     // ----------- Rotas do usuário -----------
     Route::group(['prefix' => '/users'], function(){
         Route::get('/', [UserController::class, 'listAllUsers']
         )->name('routeListAllUsers');
-    
+        
         Route::get('/{uid}', [UserController::class, 'listUserByID']
         )->name('routeListUserByID');
-    
+        
         Route::match(['get', 'put'], '/{uid}/edit', [UserController::class, 'editUser']
         )->name('routeEditUser');
         //Route::put('/users/{uid}/edit', [UserController::class, 'editUser'])->name('routeEditUser');
-    
+        
         Route::delete('/{uid}/delete', [UserController::class, 'deleteUser']
         )->name('routeDeleteUser');
     });
@@ -90,34 +95,37 @@ Route::middleware('auth')->group(function(){
     // ----------- Rotas do Tópico -----------
     Route::match(['get', 'post'], '/create-topic', [TopicController::class, 'createTopic']
     )->name('routeCreateTopic');
-
+    
     Route::match(['get', 'post'], '/topics/{id}/edit', [TopicController::class, 'editTopic']
     )->name('routeEditTopic');
 
     Route::delete('/topics/{id}/delete', [TopicController::class, 'deleteTopic']
     )->name('routeDeleteTopic');
 
-    // ----------- Rotas do Comentário -----------
-    // Route::post('/create-comment', [CommentController::class, 'createComment']
-    // )->name('routeCreateComment');
+    // ----------- Rotas do Comentário -------------
+    Route::match(['get', 'post'], '/comments/{id}', [CommentController::class, 'editComment']
+    )->name('routeEditComment');
 
+    Route::delete('/comments/{comment_id}', [CommentController::class, 'deleteComment']
+    )->name('routeDeleteComment');
+    
     // ----------- Rotas da Categoria -----------
     Route::match(['get', 'post'], '/create-category', [CategoryController::class, 'createCategory']
     )->name('routeCreateCategory');
 
     Route::match(['get', 'put'], '/categories/{id}/edit', [CategoryController::class, 'editCategory']
     )->name('routeEditCategory');
-
+    
     Route::delete('/categories/{id}/delete', [CategoryController::class, 'deleteCategory']
     )->name('routeDeleteCategory');
-
+    
     // ----------- Rotas da Tag -----------
     Route::match(['get', 'post'], '/create-tag', [TagController::class, 'createTag']
     )->name('routeCreateTag');
-
+    
     Route::match(['get', 'put'], '/tags/{id}/edit', [TagController::class, 'editTag']
     )->name('routeEditTag');
-
+    
     Route::delete('/tags/{id}/delete', [TagController::class, 'deleteTag']
     )->name('routeDeleteTag');
 });

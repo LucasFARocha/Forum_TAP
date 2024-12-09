@@ -60,7 +60,7 @@
                                 value="{{ old('content') }}" required></textarea>
                             @error('content') <span>{{ $message }}</span> @enderror
 
-                            <input type="file" id="image" name="image" placeholder="Imagem do Tópico" 
+                            <input type="file" id="image" name="image" placeholder="Imagem do Comentário" 
                             value="{{ old('image') }}">
                             @error('image') <span>{{ $message }}</span> @enderror
 
@@ -86,11 +86,14 @@
                         @if(!empty($comment->post->image))
                             <img class="image comment-image" src="/storage/{{ $comment->post->image }}" alt="Imagem do comentário">
                         @endif
+                        <a href="{{ route('routeListCommentByID', $comment->id) }}" class="view-comment">
+                            Visualizar &nbsp;
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
                     </div>
                     @endforeach
+                </div>
             </div>
-            </div>
-
         </div>
     @else
         <div>Tópico não encontrado!</div>

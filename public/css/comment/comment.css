@@ -29,4 +29,9 @@ input[type=submit]{
 .comment-content{
     background-color: #1b258d;
     box-shadow: none;
+    max-width: 870px;
+}
+.view-comment{
+    background-color: #131a61;
+    position: relative;
 }
