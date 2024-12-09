@@ -37,17 +37,48 @@ class CommentController extends Controller
             $imagePath = $request->file('image')->store('images', 'public');
         }
 
+        // dd(Auth::id());
         $comment->post()->create([
             'user_id' => Auth::id(),
             'image' => $imagePath
         ]);
+
+        // dd($comment->post);
 
         return redirect()->route('routeListTopicByID', $topic_id);
     }
 
     public function editComment(Request $request, $id)
     {
-        
+        $comment = Comment::where('id', $id)->first();
+
+        if($request->method() === 'GET')
+        {
+            return view('comment.editComment', ['comment' => $comment]);
+        }
+        else
+        {
+            if($request->content != '')
+            {
+                $request->validate(['content' => 'string|max:255']);
+                $comment->content = $request->content;
+            }
+            if($request->image != null)
+            {
+                $request->validate(['image' => 'image|mimes:jpeg,jpg,png,gif|max:2048']);
+
+                $imagePath = $request->file('image')->store('images', 'public');
+                $comment->post()->update([
+                    'image' => $imagePath
+                ]);
+            }
+
+            $comment->save();
+
+            return redirect()
+                ->route('routeListCommentByID', $comment->id)
+                ->with('message', 'Atualizado com sucesso!');
+        }
     }
 
     public function deleteComment(Request $request, $id)

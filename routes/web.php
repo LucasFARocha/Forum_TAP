@@ -30,9 +30,6 @@ Route::get('/topics/{topic_id}', [TopicController::class, 'listTopicByID']
 Route::get('/comments/{comment_id}', [CommentController::class, 'listCommentByID']
 )->name('routeListCommentByID');
 
-Route::post('/topics/{topic_id}', [CommentController::class, 'createComment']
-)->name('routeCreateComment');
-
 
 // Rotas de Autenticação do Usuário; Login, Logout e Registro
 Route::match(['get', 'post'], '/login', [AuthController::class, 'loginUser']
@@ -103,7 +100,10 @@ Route::middleware('auth')->group(function(){
     )->name('routeDeleteTopic');
 
     // ----------- Rotas do Comentário -------------
-    Route::match(['get', 'post'], '/comments/{id}', [CommentController::class, 'editComment']
+    Route::post('/topics/{topic_id}', [CommentController::class, 'createComment']
+    )->name('routeCreateComment');
+
+    Route::match(['get', 'post'], '/comments/{id}/edit', [CommentController::class, 'editComment']
     )->name('routeEditComment');
 
     Route::delete('/comments/{comment_id}', [CommentController::class, 'deleteComment']

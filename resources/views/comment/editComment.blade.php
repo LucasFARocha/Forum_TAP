@@ -1,8 +1,10 @@
 @extends('layouts.header')
 
-@section
-banana
-    {{-- <form action="{{route('routeCreateComment', $topic->id)}}" method="post" enctype="multipart/form-data">
+@section('content')
+    <link rel="stylesheet" href="{{ asset('css/layouts/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/comment/comment.css') }}">
+    <form action="{{route('routeEditComment', $comment->id)}}" method="post" enctype="multipart/form-data">
+        <h2 class="text black">Editar Comentário</h2>
         @csrf
         <div class="form">
 
@@ -15,5 +17,5 @@ banana
             @error('image') <span>{{ $message }}</span> @enderror
 
             <input type="submit" value="Comentar">
-    </form> --}}
+    </form>
 @endsection

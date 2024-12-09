@@ -6,7 +6,7 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/topic/listTopicByID.css') }}">
     <link rel="stylesheet" href="{{ asset('css/layouts/form.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/comment/comment.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/comment/listAllComments.css') }}">
 
     @if($topic != null)
         <div class="main">
@@ -71,26 +71,29 @@
                             </a> --}}
                         </div>
                     </form>
+                @else
+                    <p class="text">Entre com sua conta para comentar!</p>
                 @endif
 
                 <div class="comments">
+                    {{-- @dd($comments[1]->post) --}}
                     @foreach($comments as $comment)
-                    <div class="card content comment-content">
-                        @foreach($users as $user)
-                            @if($comment->post->user_id == $user->id)
-                                <p class="comment-user">{{ $user->name }}</p>
-                            @endif
-                        @endforeach
+                        <div class="card content comment-content">
+                            @foreach($users as $user)
+                                @if($comment->post->user_id == $user->id)
+                                    <p class="comment-user">{{ $user->name }}</p>
+                                @endif
+                            @endforeach
 
-                        <p>{{ $comment->content }}</p>
-                        @if(!empty($comment->post->image))
-                            <img class="image comment-image" src="/storage/{{ $comment->post->image }}" alt="Imagem do comentário">
-                        @endif
-                        <a href="{{ route('routeListCommentByID', $comment->id) }}" class="view-comment">
-                            Visualizar &nbsp;
-                            <i class="fa-solid fa-eye"></i>
-                        </a>
-                    </div>
+                            <p>{{ $comment->content }}</p>
+                            @if(!empty($comment->post->image))
+                                <img class="image comment-image" src="/storage/{{ $comment->post->image }}" alt="Imagem do comentário">
+                            @endif
+                            <a href="{{ route('routeListCommentByID', $comment->id) }}" class="view-comment">
+                                Visualizar &nbsp;
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
