@@ -7,9 +7,8 @@
         <h2 class="text black">Editar Comentário</h2>
         @csrf
         <div class="form">
-
             <textarea id="content" name="content" placeholder="Comente algo bacana"
-                value="{{ old('content') }}" required></textarea>
+                value="{{ old('content') }}" required>{{$comment->content}}</textarea>
             @error('content') <span>{{ $message }}</span> @enderror
 
             <input type="file" id="image" name="image" placeholder="Imagem do Comentário" 
