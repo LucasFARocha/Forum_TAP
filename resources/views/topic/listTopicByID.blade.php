@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="{{ asset('css/layouts/form.css') }}">
     <link rel="stylesheet" href="{{ asset('css/comment/listAllComments.css') }}">
 
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if({{$topic->status}} == 0)
+            {
+                var content = document.getElementById('content')
+                content.disabled = true
+
+                var image = document.getElementById('image')
+                image.disabled = true
+
+                var comentar = document.getElementById('comentar')
+                comentar.disabled = true
+            }
+        })
+    </script> --}}
+
     @if($topic != null)
         <div class="main">
             <div class="card">
@@ -51,28 +67,30 @@
             </div>
 
             <div class="card comment-section">
-                @if(Auth::check())
-                    <form action="{{route('routeCreateComment', $topic->id)}}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form">
+                @if($topic->status == 1)
+                    @if(Auth::check())
+                        <form action="{{route('routeCreateComment', $topic->id)}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form">
+                                <textarea id="content" name="content" placeholder="Comente algo bacana"
+                                    value="{{ old('content') }}" required></textarea>
+                                @error('content') <span>{{ $message }}</span> @enderror
 
-                            <textarea id="content" name="content" placeholder="Comente algo bacana"
-                                value="{{ old('content') }}" required></textarea>
-                            @error('content') <span>{{ $message }}</span> @enderror
+                                <input type="file" id="image" name="image" placeholder="Imagem do Comentário" 
+                                value="{{ old('image') }}">
+                                @error('image') <span>{{ $message }}</span> @enderror
 
-                            <input type="file" id="image" name="image" placeholder="Imagem do Comentário" 
-                            value="{{ old('image') }}">
-                            @error('image') <span>{{ $message }}</span> @enderror
-
-                            <input type="submit" value="Comentar">
-                            {{-- <a href="" class="create-comment">
-                                <i class="fa-solid fa-plus"></i>
-                                &nbsp; Comentar
-                            </a> --}}
-                        </div>
-                    </form>
+                                <input type="submit" id="comentar" value="Comentar">
+                            </div>
+                        </form>
+                    @else
+                        <p class="text">Entre com sua conta para comentar!</p>
+                    @endif
                 @else
-                    <p class="text">Entre com sua conta para comentar!</p>
+                    <p class="text">
+                        Este tópico se encontra atualmente fechado e, 
+                        portanto, não pode receber respostas!
+                    </p>
                 @endif
 
                 <div class="comments">

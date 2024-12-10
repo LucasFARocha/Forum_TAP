@@ -19,6 +19,12 @@
             <input type="file" id="image" name="image" placeholder="Imagem do Tópico"
             value="{{ old('image') }}">
             @error('image') <span>{{ $message }}</span> @enderror
+
+            <select name="status" id="status">
+                <option value="1">Aberto</option>
+                <option value="0">Fechado</option>
+            </select>
+            @error('status') <span>{{ $message }}</span> @enderror
             
             <select name="category" id="category">
                 <!-- <option value="none"></option> -->

@@ -122,6 +122,7 @@ class TopicController extends Controller
                 $request->validate(['description' => 'string|max:255']);
                 $topic->description = $request->description;
             }
+            $topic->status = $request->status;
 
             // Não há validação para categoria ao editar
             $topic->category_id = $request->category;
